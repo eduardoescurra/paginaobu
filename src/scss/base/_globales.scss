@@ -1,0 +1,61 @@
+html{
+    box-sizing: border-box;
+    font-size: 62.5%;//1rem = 10px
+    scroll-behavior: smooth;
+}
+*,*:before,*:after{
+    box-sizing: inherit;
+}
+body{
+    font-family: $fuentePrincipal;
+    font-size: 1.6rem;
+    &.fijar-body{
+        overflow: hidden;
+    }
+}
+p{
+    font-size: 1.6rem;
+    font-weight: $delgada;
+    color: $gris;
+}
+.contenedor{
+    max-width: 120rem;
+    width: 80%;
+    margin: 0 auto;
+}
+a{
+    text-decoration: none;
+}
+img,
+picture {
+    width: 100%;
+    display: block;
+}
+h1, h2 ,h3{
+    margin: 0;
+}
+h1{
+    font-size: 4rem;
+    font-family: $fuenteLogo;
+}
+h2{
+    font-size: 3.6rem;
+}
+h3{
+    font-size: 3rem;
+}
+.boton{
+    color: $blanco;
+    padding: 1rem 2rem;
+    margin-bottom: 2rem;
+    background-color: $morado;
+    border-radius: 0.8rem;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: $delgada;
+    transition: 0.4s;
+    &:hover{
+        background-color: $verde;
+        //transform: scale(1.1);
+    }
+}
