@@ -3,7 +3,7 @@
     
     <main class="contenedor seccion">
         <h2>Pide tu beca aqui</h2>
-        <h1>Hola Mundo</h1>
+        <p>Mira esto prro ya se programar en gith</p>
     </main>
 
 <?php include "includes/templates/footer.php"; ?> 
