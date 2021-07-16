@@ -1,11 +1,6 @@
     
 <?php include "includes/templates/header.php"; ?>
     
-<<<<<<< HEAD
-    <main class="contenedor seccion">
-        <h2>Pide tu beca aqui</h2>
-       <h3>Hola perro</h3>
-=======
     <main class="contenedor contenedor-seccion">
         <section class="seccion">
             <div class="titulo">
@@ -27,7 +22,6 @@
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur molestias quasi optio! Consequuntur expedita saepe libero accusantium non animi molestiae laborum dolore molestias hic ullam iste, sed consequatur maxime fuga.</p>
             </div>
         </section>
->>>>>>> david
     </main>
 
 <?php include "includes/templates/footer.php"; ?> 
