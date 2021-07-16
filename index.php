@@ -5,6 +5,8 @@
         <section class="seccion">
             <div class="titulo">
                 <h2>Cronograma</h2>
+                <h3>Revisar</h3>
+
             </div>
             <div class="info">
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae officia quae doloremque, sapiente ab ipsam suscipit excepturi id porro quas facilis iusto in, dicta perspiciatis doloribus pariatur inventore illum est.</p>
