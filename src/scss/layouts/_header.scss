@@ -4,3 +4,14 @@
         width: 20rem;
     }
 }
+
+.cajas{
+    .caja{
+        p{
+            color: $rosa;
+        }
+    }
+    @include tablet{
+        @include grid(3);
+    }
+}

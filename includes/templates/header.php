@@ -9,5 +9,17 @@
 </head>
 <body>
     <header class="header">
-        <h1>OBU PA VEN TENGO COMIDA</h1>
+        <a href="#" ><img class="logo" src="build/img/logo.png" alt="logo de OBU"></a>
+        <div class="contenedor cajas">
+            <div class="caja">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, facere ea pariatur dolores blanditiis quo deleniti officiis iste fuga nihil vitae doloremque ab corporis exercitationem labore modi quis iure minus.</p>
+            </div>
+            <div class="caja">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, facere ea pariatur dolores blanditiis quo deleniti officiis iste fuga nihil vitae doloremque ab corporis exercitationem labore modi quis iure minus.</p>
+            </div>
+            <div class="caja">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, facere ea pariatur dolores blanditiis quo deleniti officiis iste fuga nihil vitae doloremque ab corporis exercitationem labore modi quis iure minus.</p>
+            </div>
+
+        </div>
     </header>
