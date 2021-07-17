@@ -1,6 +1,5 @@
     
 <?php include "includes/templates/header.php"; ?>
-    
     <main class="contenedor main">
         <div class="principal r-gap">
             <section class="seccion">
@@ -44,7 +43,5 @@
                 </div>
             </section>
         </div>
-    </main>
-
 <?php include "includes/templates/footer.php"; ?> 
 
