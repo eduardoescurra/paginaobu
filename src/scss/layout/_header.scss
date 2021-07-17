@@ -48,7 +48,7 @@
     display: grid;
     justify-content: center;
     @include tablet{
-        @include grid(3);
+        @include grid(5);
         
     }
     .icono{
@@ -56,9 +56,23 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        &:hover, &:focus{
+            .texto{
+                background-size: 100% 2px;
+            }
+        }
         @include tablet{
             display: flex;
             flex-direction: row;
+            .texto{
+                font-size: 1.2rem;
+                padding-bottom: 0.2rem;
+                background-image: linear-gradient( 90deg,$rojo, $rojo);
+                background-position: 0% 100%;
+                background-repeat: no-repeat;
+                background-size: 0% 2px;
+                transition: background-size .3s;
+            }
         }
     }
 }
@@ -72,7 +86,7 @@
         padding: .4rem 0.6rem;
         border-radius: 50%;
         font-size: 1rem;
-        top: -1.8rem;
-        left: 1.5rem;
+        top: -2.2rem;
+        left: 0.6rem;
     }
 }
