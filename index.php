@@ -43,5 +43,6 @@
                 </div>
             </section>
         </div>
+    </main>
 <?php include "includes/templates/footer.php"; ?> 
 
