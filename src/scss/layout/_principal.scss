@@ -1,12 +1,10 @@
-.main{
-    margin-top: 5rem;
-    width: 90%;
+.base{
+    margin: 5rem auto;
+    width: 60%;
     display: grid;
     row-gap: 2rem;
     @include tablet{
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        column-gap: 2rem;
+        justify-content: center;
     }
 }
 .seccion{

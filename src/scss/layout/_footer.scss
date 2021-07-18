@@ -1,0 +1,44 @@
+.footer{
+    background-color: #202124;
+    color: white;
+    padding-top: 2rem;
+    .informacion{
+        @include grid(1);
+        @include tablet{
+            @include grid(3);
+        }
+        span{
+            font-weight: $bold;
+        }
+        p{
+            color: white;
+        }
+        a{
+            color: #e2e3e6;
+        }
+    }
+
+    .derechos{
+        margin: 0;
+        padding: 2rem;
+        background-color: rgb(20, 20, 22);
+        text-align: center;
+        color: white;
+    }
+}
+.box{
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgb(20, 20, 22);
+    &:last-of-type{
+        border-bottom: 0;
+    }
+    @include tablet{
+        margin-bottom: 0;
+    }
+    h3{
+        text-transform: uppercase;
+        font-size: 2rem;
+        font-weight: $bold;
+    }
+    
+}

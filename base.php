@@ -1,10 +1,17 @@
     
 <?php include "includes/templates/header.php"; ?>
-    
-    <main class="contenedor main">
-        <h2>Pide tu beca aqui</h2>
-        <p>Mira esto prro ya se programar en gith</p>
+    <main class="contenedor base">
+        <div class="principal r-gap">
+            <section class="seccion">
+                <div class="titulo bg-rojo">
+                    <h2>Titulo Aqui</h2>
+                </div>
+                <div class="info">
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae officia quae doloremque, sapiente ab ipsam suscipit excepturi id porro quas facilis iusto in, dicta perspiciatis doloribus pariatur inventore illum est.</p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur molestias quasi optio! Consequuntur expedita saepe libero accusantium non animi molestiae laborum dolore molestias hic ullam iste, sed consequatur maxime fuga.</p>
+                </div>
+            </section>
+        </div>
     </main>
-
 <?php include "includes/templates/footer.php"; ?> 
 
