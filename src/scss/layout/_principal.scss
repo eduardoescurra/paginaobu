@@ -1,3 +1,15 @@
+.main{
+    margin: 5rem auto;
+    width: 90%;
+    display: grid;
+    row-gap: 2rem;
+    @include tablet{
+        width: 80%;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        column-gap: 2rem;
+    }
+}
 .base{
     margin: 5rem auto;
     width: 60%;
