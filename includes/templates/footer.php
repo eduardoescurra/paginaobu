@@ -17,8 +17,8 @@
             <div class="box">
                 <h3>Documentos</h3>
                 <p><a href="#">Transparencia</a></p>
-                <p><a href="#">Requisitos</a></p>
                 <p><a href="#">Modelo Educativo</a></p>
+                <p><a href="#">Condiciones</a></p>
                 <p><a href="#">Plan Desarrollo Institucional</a></p>
                 <p><a href="#">Normas y Resoluciones </a></p>
             </div>
