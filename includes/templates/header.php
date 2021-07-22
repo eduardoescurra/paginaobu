@@ -11,13 +11,13 @@
     <header class="header">
         <div class="contenedor contenido-header">
             <div class="contenido-logo">
-                <a href="#" ><img class="logo" src="build/img/logo.png" alt="logo de OBU"></a>
+                <a href="../../index.php" ><img class="logo" src="build/img/logoobu.png" alt="logo de OBU"></a>
                 <div class="separa"></div>
-                <h2>Postulante</h2>
+                <h2>Estudiante</h2>
             </div>
             <nav class="navegacion">
 
-                <a href="#" class="icono">
+                <a href="../../index.php" class="icono">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="20" height="20" viewBox="0 0 24 24" stroke-width="2.5" stroke="#828282" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                     <polyline points="5 12 3 12 12 3 21 12 19 12" />
@@ -27,7 +27,7 @@
                     <p class="texto">Inicio</p>
                 </a>    
 
-                <a href="#" class="icono">
+                <a href="../../postular.php" class="icono">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil" width="20" height="20" viewBox="0 0 24 24" stroke-width="2.5" stroke="#828282" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                     <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />

@@ -1,20 +1,35 @@
 .flex{
     padding: 0;
     height: 100vh;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .formulario{
     display: flex;
+    width: 90%;
     flex-direction: column;
     align-items: center;
     background-color: $blanco;
     box-shadow: 0 0.1rem 0.4rem rgba(63, 63, 63, 0.459);
     border-radius: 0.5rem;
     padding: 2rem 1rem;
+
+    @include telefono{
+        width: 50%;
+    }
+
+    @include tablet{
+        width: 25%;
+    }
+    .usuario{
+        font-size: 2rem;
+        margin: 0;
+    }
     fieldset{
         border: 0;
+        width: 100%;
         display: grid;
         grid-template-columns: 1fr;
         row-gap: 1.5rem;
@@ -37,13 +52,18 @@
     }
 }
 .imagen-login{
-    max-width: 50%;
+    width: 50%;
     margin: 0 auto;
     margin-bottom: 1rem;
 }
+.imagen-obu{
+    width: 90%;
+    margin: 0 auto;
+}
 .boton{
-    width: 88%;
-    background-color: #00BB8D;
+    cursor: pointer;
+    width: 95%;
+    background-color: $verde;
     padding: 1rem;
     color: $blanco;
     font-size: 1.2rem;

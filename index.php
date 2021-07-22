@@ -19,7 +19,7 @@
             <section class="seccion">
                 <div class="info postular">
                     <p>Si aún no realizas tu Postulación, haz click en: </p>
-                    <a href="#">Postular</a>
+                    <a href="postular.php">Postular</a>
                 </div>
             </section>
         </div>

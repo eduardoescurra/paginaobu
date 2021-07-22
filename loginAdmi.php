@@ -9,21 +9,20 @@
 </head>
 <body>
     <main class="flex">
-        <form class="formulario" method="POST" action="login.php">
+        <form class="formulario" method="POST" action="loginAdmi.php">
             <img class="imagen-obu" src="build/img/logoobu.png" alt="imagen logo obu">
-            <p class="usuario">Estudiante</p>
+            <p class="usuario">Administrador</p>
             <img class="imagen-login" src="build/img/login.png" alt="imagen login">
             
             <fieldset>
                 
                 <!-- <label for="usuario">Usuario</label> -->
-                <input type="text" name="usuario" placeholder="usuario" id="usuario">
+                <input type="number" name="usuario" placeholder="usuario" id="usuario">
 
                 <!-- <label for="password">Password</label> -->
                 <input type="password" name="password" placeholder="contraseña" id="password">
             </fieldset>
             <input type="submit" value="Iniciar Sesión" class=" boton boton-verde">
-            <p>¿No estás registrado? <a href="signup.php">Crea una cuenta</a></p>
         </form> 
               
     </main>
