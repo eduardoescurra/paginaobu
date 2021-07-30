@@ -90,3 +90,10 @@
         left: 0.6rem;
     }
 }
+.navegacion{
+    &.nav-admi{
+        @include tablet{
+            @include grid(3); 
+        }
+    }
+}

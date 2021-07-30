@@ -22,14 +22,14 @@
                         <input class="input" type="text" id="direccion" name="direccion"  placeholder="su dirección actual"">
 
                         <label for="">Provincia</label>
-                        <select name="vendedor">
+                        <select name="provincia">
                             <option value="">-- Seleccione --</option>
                             <option value="">Lima</option>
                             <option value="">Callao</option>
                         </select>
 
                         <label for="">Distrito</label>
-                        <select name="vendedor">
+                        <select name="distrito">
                             <option value="">-- Seleccione --</option>
                             <option value="">Carabayllo</option>
                             <option value="">Villa el Salvador</option>
@@ -51,7 +51,7 @@
                         <input class="subirfile" type="file" id="anexo" accept="application/pdf" name="anexo">
                     </fieldset>
 
-                    <input type="submit" value="Crear Cuenta" class="botonP boton-verde">
+                    <input type="submit" value="Enviar Postulación" class="botonE bg-verde">
                 </form>
         </section>
     </main>

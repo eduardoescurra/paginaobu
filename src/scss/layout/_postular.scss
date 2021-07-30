@@ -16,6 +16,9 @@
     }
 }
 .formularioP{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: $blanco;
     border-radius: 0.5rem;
     padding: 2rem 1rem;
@@ -34,6 +37,7 @@
         margin-bottom: 2rem;
         border-bottom: 1px solid $grisClaro;
         legend{
+            font-weight: $bold;
             color: $azul;
         }
 
@@ -41,7 +45,7 @@
             margin-bottom: 0;
             border: none;
         }
-        .input, .subirfile{
+        .input, .subirfile, select{
             background-color: $grisClaro;
             border-radius: 0.5rem;
             border: 0;
@@ -50,8 +54,18 @@
             color: $gris;
         }
     }
-
+    .botonE{
+        display:inline;
+        margin: 0 auto;
+        border: none;
+        color: $blanco;
+        padding: 1rem 2rem;
+        border-radius: 1rem;
+        font-weight: $bold;
+        
+    }
 }
+
 .contenedor-pdf{
     margin: auto;
     width: 80%;
