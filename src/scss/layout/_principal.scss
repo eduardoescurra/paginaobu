@@ -19,6 +19,16 @@
         justify-content: center;
     }
 }
+
+.baseP{
+    margin: 5rem auto;
+    width: 90%;
+    display: grid;
+    row-gap: 2rem;
+    @include tablet{
+        justify-content: center;
+    }
+}
 .seccion{
     background-color: $blanco;
     box-shadow: 0 0.1rem 0.4rem rgba(63, 63, 63, 0.459);
