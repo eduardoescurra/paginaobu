@@ -6,9 +6,9 @@
                 <div class="titulo bg-rojo">
                     <h2>Sin Postulación</h2>
                 </div>
-                <div class="info">
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae officia quae doloremque, sapiente ab ipsam suscipit excepturi id porro quas facilis iusto in, dicta perspiciatis doloribus pariatur inventore illum est.</p>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur molestias quasi optio! Consequuntur expedita saepe libero accusantium non animi molestiae laborum dolore molestias hic ullam iste, sed consequatur maxime fuga.</p>
+                <div class="info postular">
+                    <p>Parece que aún no realizas tu Postulación, haz click en: </p>
+                    <a href="postular.php">Postular</a>
                 </div>
             </section>
 
@@ -16,13 +16,14 @@
                 <div class="titulo bg-azul">
                     <h2>Ver postulacion</h2>
                 </div>
-                <div class="info">
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae officia quae doloremque, sapiente ab ipsam suscipit excepturi id porro quas facilis iusto in, dicta perspiciatis doloribus pariatur inventore illum est.</p>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur molestias quasi optio! Consequuntur expedita saepe libero accusantium non animi molestiae laborum dolore molestias hic ullam iste, sed consequatur maxime fuga.</p>
+                <div class="info verpostulacion">
+                    <div class="tabla">
+                        <h3>Id</h3>
+                        <p>P01</p>
+                    </div>
                 </div>
             </section>
             
-
         </div>
     </main>
 <?php include "includes/templates/footer.php"; ?> 
