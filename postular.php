@@ -1,5 +1,17 @@
     
-<?php include "includes/templates/header.php"; ?>
+<?php 
+    //BASE DE DATOS
+    require 'includes/config/database.php';
+    $db = conectarDB();
+
+    //CONSULTAR CON LAS PROVINCIAS
+    $consulta = "SELECT * FROM provincias";
+    $consulta2 = "SELECT * FROM distritos";
+    $resultadoP = mysqli_query($db, $consulta);
+    $resultadoD = mysqli_query($db, $consulta2);
+
+
+include "includes/templates/header.php"; ?>
     <main class="main-postular">
         <section class="seccionP">
             <div class="titulo bg-rojo">
@@ -24,17 +36,18 @@
                         <label for="">Provincia</label>
                         <select name="provincia">
                             <option value="">-- Seleccione --</option>
-                            <option value="">Lima</option>
-                            <option value="">Callao</option>
+                            <?php while($provincia = mysqli_fetch_assoc($resultadoP)) : ?>
+                                <option value=" <?php echo $provincia['id'] ?>"><?php echo $provincia['nombre']; ?></option>
+                            <?php endwhile; ?>
                         </select>
 
                         <label for="">Distrito</label>
                         <select name="distrito">
-                            <option value="">-- Seleccione --</option>
-                            <option value="">Carabayllo</option>
-                            <option value="">Villa el Salvador</option>
+                        <option value="">-- Seleccione --</option>
+                            <?php while($distrito = mysqli_fetch_assoc($resultadoD)) : ?>
+                                <option value=" <?php echo $distrito['id'] ?>"><?php echo $distrito['nombre']; ?></option>
+                            <?php endwhile; ?>
                         </select>
-                </select>
                     </fieldset>
 
                     <fieldset>
