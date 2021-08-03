@@ -45,16 +45,17 @@
             margin-bottom: 0;
             border: none;
         }
-        .input, .subirfile, select{
-            background-color: $grisClaro;
-            border-radius: 0.5rem;
-            border: 0;
-            padding: 1.2rem 1rem; 
-            font-size: 1.2rem;
-            color: $gris;
-        }
+        // .input, .subirfile, select{
+        //     background-color: $grisClaro;
+        //     border-radius: 0.5rem;
+        //     border: 0;
+        //     padding: 1.2rem 1rem; 
+        //     font-size: 1.2rem;
+        //     color: $gris;
+        // }
     }
     .botonE{
+        cursor: pointer;
         display:inline;
         margin: 0 auto;
         border: none;
@@ -64,6 +65,15 @@
         font-weight: $bold;
         
     }
+}
+
+input, .subirfile, select{
+    background-color: $grisClaro;
+    border-radius: 0.5rem;
+    border: 0;
+    padding: 1.2rem 1rem; 
+    font-size: 1.2rem;
+    color: #202124;
 }
 
 .contenedor-pdf{

@@ -6,9 +6,7 @@
 
     //CONSULTAR CON LAS PROVINCIAS
     $consulta = "SELECT * FROM provincias";
-    $consulta2 = "SELECT * FROM distritos";
     $resultadoP = mysqli_query($db, $consulta);
-    $resultadoD = mysqli_query($db, $consulta2);
 
     // echo "<pre>";
     // var_dump($_POST);
@@ -37,25 +35,68 @@
     $direccion = mysqli_real_escape_string($db, $_POST['direccion']);
     $provincia = mysqli_real_escape_string($db, $_POST['provincia']);
     $distrito = mysqli_real_escape_string($db, $_POST['distrito']);
+    $creado = date('Y/m/d');
 
     if(!$dni){
-        $errores[] = "El DNI el obligatorio";
+        $errores[] = "El DNI es obligatorio";
     }
     if(!$email){
-        $errores[] = "El email el obligatorio";
+        $errores[] = "El email es obligatorio";
     }
     if(!$celular){
-        $errores[] = "El celular el obligatorio";
+        $errores[] = "El celular es obligatorio";
     }
     if(!$direccion){
-        $errores[] = "La dirección el obligatoria";
+        $errores[] = "La dirección es obligatoria";
     }
     if(!$provincia){
-        $errores[] = "La provincia el obligatoria";
+        $errores[] = "La provincia es obligatoria";
     }
     if(!$distrito){
-        $errores[] = "El distrito el obligatorio";
+        $errores[] = "El distrito es obligatorio";
     }
+
+    if(!$adni['name'] || $adni['error']){
+        $errores[] = "Adjunte el DNI y del apoderado";
+    }
+    if(!$adni['name'] || $adni['error']){
+        $errores[] = "Adjunte el DNI y del apoderado";
+    }
+    //VALIDAR POR TAMAÑO (1000KB MAXIMO)
+    $medida = 1000 * 2000;
+    if($adni['size'] > $medida){
+        $errores[] = "El pdf DNI es muy pesada, maximo 2MB";
+    }
+    if($luz['size'] > $medida){
+        $errores[] = "El pdf recibo de  Luz es muy pesada, maximo 2MB";
+    }
+    if($anexo['size'] > $medida){
+        $errores[] = "El pdf anexo es muy pesada, maximo 2MB";
+    }
+
+    if(empty($errores)){
+        //SUBIDA DE ARCHIVOS
+        $carpetaPdf = "pdf/";
+
+        if(!is_dir($carpetaPdf)){
+            mkdir($carpetaPdf);
+        }
+
+        //GENERAR NOMBR UNICO
+        $nombrePdf1 = md5(uniqid(rand(),true)) . ".pdf";
+        $nombrePdf2 = md5(uniqid(rand(),true)) . ".pdf";
+
+        //SUBIR IMAGEN
+        move_uploaded_file($adni['tmp_name'], $carpetaPdf . $nombrePdf1);
+        move_uploaded_file($luz['tmp_name'], $carpetaPdf . $nombrePdf2);
+
+        if($anexo['size'] > 0){
+            $nombrePdf3 = md5(uniqid(rand(),true)) . ".pdf";
+            move_uploaded_file($anexo['tmp_name'], $carpetaPdf . $nombrePdf3);
+        }
+    }
+    
+
  }
 
 include "includes/templates/header.php"; ?>
@@ -103,11 +144,12 @@ include "includes/templates/header.php"; ?>
                         <select id="distrito" name="distrito">
                             <option value="">-- Seleccione --</option>
                             <?php if($provincia) : ?>
-                                <option value="">holaaa</option>
-    
-                                <!-- // while ($distrito = mysqli_fetch_assoc($resultado)) {                
-                                //     $html .= '<option value="'.$distrito['id'].'">'.$distrito['nombre'].'</option>';
-                                // }    -->
+                                <?php 
+                                $consulta2 = "SELECT * FROM distritos WHERE provinciaId = ".$provincia."";
+                                $resultadoD = mysqli_query($db, $consulta2);
+                                while ($row2 = mysqli_fetch_assoc($resultadoD)) : ?>                
+                                    <option <?php echo $distrito == $row2['id'] ? 'selected' : ''; ?> value="<?php echo $row2['id'] ?>"> <?php echo $row2['nombre']; ?></option>
+                                <?php endwhile?>
                             <?php endif; ?>
                         </select>
                     </fieldset>
