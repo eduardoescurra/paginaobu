@@ -9,6 +9,7 @@
     }
 }
 .seccionP{ 
+    background-color: $blanco;
     .titulo h2{
         color: $blanco;
         font-size: 2rem;
@@ -19,7 +20,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: $blanco;
     border-radius: 0.5rem;
     padding: 2rem 1rem;
     .usuario{
@@ -76,4 +76,14 @@
     
     width: 100%;
     height: 80%;
+}
+.alerta{
+    background-color: $blanco;
+    p{
+        margin: 0.5rem 0;
+        background-color: rgb(255, 131, 162);
+        text-align: center;
+        color: $blanco;
+    }
+    
 }

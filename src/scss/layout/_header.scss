@@ -8,6 +8,7 @@
     
     display: grid;
     justify-content: center;
+    row-gap: 2rem;
     @include tablet{
         @include grid(2);
     }
@@ -45,9 +46,16 @@
     }
 }
 .navegacion{
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    transition: visibility .3s ease-in-out, opacity 0.5s linear, height 1s linear;
+
     display: grid;
     justify-content: center;
     @include tablet{
+        visibility: visible;
+        opacity: 1;
         @include grid(5);
         
     }
@@ -96,4 +104,18 @@
             @include grid(3); 
         }
     }
+}
+
+.mobile-menu{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    @include tablet{
+        display: none;
+    }
+}
+.mostrar{
+    visibility: visible;
+    opacity: 1;
+    height: auto;
 }
