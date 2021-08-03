@@ -34,7 +34,7 @@ include "includes/templates/header.php"; ?>
                         <input class="input" type="text" id="direccion" name="direccion"  placeholder="su dirección actual"">
 
                         <label for="">Provincia</label>
-                        <select name="provincia">
+                        <select id="provincia" name="provincia">
                             <option value="">-- Seleccione --</option>
                             <?php while($provincia = mysqli_fetch_assoc($resultadoP)) : ?>
                                 <option value=" <?php echo $provincia['id'] ?>"><?php echo $provincia['nombre']; ?></option>
@@ -42,11 +42,8 @@ include "includes/templates/header.php"; ?>
                         </select>
 
                         <label for="">Distrito</label>
-                        <select name="distrito">
-                        <option value="">-- Seleccione --</option>
-                            <?php while($distrito = mysqli_fetch_assoc($resultadoD)) : ?>
-                                <option value=" <?php echo $distrito['id'] ?>"><?php echo $distrito['nombre']; ?></option>
-                            <?php endwhile; ?>
+                        <select id="distrito" name="distrito">
+                            <option value="">-- Seleccione --</option>
                         </select>
                     </fieldset>
 
@@ -55,7 +52,7 @@ include "includes/templates/header.php"; ?>
 
                         <label for="adni">Adjunte DNI y del Apoderado </label>
                         <input class="subirfile" type="file" id="adni" accept="application/pdf" name="adni">
-                        <div class="verpdf"><p>Ver pdf</p></div>
+                        <!-- <div class="verpdf"><p>Ver pdf</p></div> -->
 
                         <label for="luz">Adjunte Recibo de Luz </label>
                         <input class="subirfile" type="file" id="luz" accept="application/pdf" name="luz">
