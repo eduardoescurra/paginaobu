@@ -14,7 +14,7 @@
 
             <section class="seccion">
                 <div class="titulo bg-azul">
-                    <h2>Ver postulacion Gaaaa</h2>
+                    <h2>Ver postulacion</h2>
                 </div>
                 <div class="info tabla">
                     <div class="columna">
