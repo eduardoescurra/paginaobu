@@ -59,8 +59,8 @@
     if(!$adni['name'] || $adni['error']){
         $errores[] = "Adjunte el DNI y del apoderado";
     }
-    if(!$adni['name'] || $adni['error']){
-        $errores[] = "Adjunte el DNI y del apoderado";
+    if(!$luz['name'] || $luz['error']){
+        $errores[] = "Adjunte el recibo de Luz";
     }
     //VALIDAR POR TAMAÑO (1000KB MAXIMO)
     $medida = 1000 * 2000;
@@ -94,6 +94,21 @@
             $nombrePdf3 = md5(uniqid(rand(),true)) . ".pdf";
             move_uploaded_file($anexo['tmp_name'], $carpetaPdf . $nombrePdf3);
         }
+
+          //INSERTAR EN LA BASE DE DATOS
+        //   $query = "INSERT INTO propiedades (titulo, precio, imagen, descripcion, habitaciones, wc, estacionamiento, creado, vendedorId) VALUES ( '$titulo', '$precio', '$nombreImagen', '$descripcion', '$habitaciones', '$wc', '$estacionamiento', '$creado', '$vendedorId' )";
+
+          //echo $query;
+
+        //   $resultado = mysqli_query($db, $query);
+
+        //   if($resultado){
+        //       //REDIRECIONAR AL USUARIO
+              
+        //       header('Location: /index?resultado=1');
+        //   }
+
+          header('Location: /index?resultado=1');
     }
     
 
@@ -117,19 +132,19 @@ include "includes/templates/header.php"; ?>
                     <fieldset>
                         <legend>Datos Personales</legend>
 
-                        <label for="dni">DNI</label>
+                        <label for="dni">DNI <span>*</span></label>
                         <input class="input" type="number" name="dni" placeholder="ingrese su dni" id="dni"  value="<?php echo $dni; ?>">
 
-                        <label for="email">Email</label>
+                        <label for="email">Email <span>*</span></label>
                         <input class="input" type="email" name="email" placeholder="su Email" id="email" value="<?php echo $email; ?>">
 
-                        <label for="celular">Celular</label>
+                        <label for="celular">Celular <span>*</span></label>
                         <input class="input" type="number" name="celular" placeholder="ingrese su celular" id="celular" value="<?php echo $celular; ?>">
 
-                        <label for="direccion">Dirección Actual</label>
+                        <label for="direccion">Dirección Actual <span>*</span></label>
                         <input class="input" type="text" id="direccion" name="direccion"  placeholder="su dirección actual" value="<?php echo $direccion; ?>">
 
-                        <label for="">Provincia</label>
+                        <label for="">Provincia <span>*</span></label>
                         <select id="provincia" name="provincia">
                             <option value="">-- Seleccione --</option>
                             <?php while($row = mysqli_fetch_assoc($resultadoP)) : ?>
@@ -140,7 +155,7 @@ include "includes/templates/header.php"; ?>
                         
                         
                         
-                        <label for="">Distrito</label>
+                        <label for="">Distrito <span>*</span></label>
                         <select id="distrito" name="distrito">
                             <option value="">-- Seleccione --</option>
                             <?php if($provincia) : ?>
@@ -155,20 +170,23 @@ include "includes/templates/header.php"; ?>
                     </fieldset>
 
                     <fieldset>
-                        <legend>Documentos Adjuntos</legend>
+                        <legend>Documentos Adjuntos <span>(Documentos en formato PDF, máximo 2MB)</span></legend>
 
-                        <label for="adni">Adjunte DNI y del Apoderado </label>
+                        <label for="adni">Adjunte su DNI y del Apoderado en 1 pdf <span>*</span></label>
                         <input class="subirfile" type="file" id="adni" accept="application/pdf" name="adni">
                         <!-- <div class="verpdf"><p>Ver pdf</p></div> -->
 
-                        <label for="luz">Adjunte Recibo de Luz </label>
+                        <label for="luz">Adjunte Recibo de Luz en pdf <span>*</span></label>
                         <input class="subirfile" type="file" id="luz" accept="application/pdf" name="luz">
 
                         <label for="anexo">Adjunte Anexos en 1 solo archivo </label>
                         <input class="subirfile" type="file" id="anexo" accept="application/pdf" name="anexo">
                     </fieldset>
 
+                    <p><span>*</span> Campos obligatorios</p>
+
                     <input type="submit" value="Enviar Postulación" class="botonE bg-verde">
+
                 </form>
         </section>
     </main>

@@ -6,6 +6,11 @@
 }
 .bg-verde{
     background-color: $verde;
+    transition: opacity .3s ease-in-out;
+    &:hover{
+        opacity: 0.75;
+        
+    }
 }
 .r-gap{
     display: grid;

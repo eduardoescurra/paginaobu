@@ -32,27 +32,30 @@
         display: grid;
         grid-template-columns: 1fr;
         row-gap: 1.5rem;
-        padding-bottom: 1.5rem;
         padding-bottom: 2rem;
         margin-bottom: 2rem;
         border-bottom: 1px solid $grisClaro;
         legend{
+            font-size: 2rem;
             font-weight: $bold;
             color: $azul;
+            span{
+                color: $rojo;
+                font-size: 1.5rem;
+                font-weight: $regular;
+            }
         }
 
         &:last-of-type{
             margin-bottom: 0;
             border: none;
         }
-        // .input, .subirfile, select{
-        //     background-color: $grisClaro;
-        //     border-radius: 0.5rem;
-        //     border: 0;
-        //     padding: 1.2rem 1rem; 
-        //     font-size: 1.2rem;
-        //     color: $gris;
-        // }
+        label{
+            span{
+                color: $rojo;
+            }
+        }
+        
     }
     .botonE{
         cursor: pointer;
@@ -64,6 +67,16 @@
         border-radius: 1rem;
         font-weight: $bold;
         
+    }
+    p{
+        display: inline;
+        text-align: left;
+        font-size: 1rem;
+        span{
+            font-weight: $regular;
+            font-size: 2rem;
+            color: $rojo;
+        }
     }
 }
 
