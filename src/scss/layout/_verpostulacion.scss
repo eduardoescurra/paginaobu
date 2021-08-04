@@ -1,0 +1,18 @@
+.r-gap{
+    margin: 2rem 0;
+}
+.tabla{
+    overflow-x: auto;
+    @include tablet{
+        @include grid (9);
+        align-items: center;
+    }
+    .columna{
+        h3{
+            text-align: center;
+        }
+        p{
+            text-align: center;
+        }
+    }
+}
