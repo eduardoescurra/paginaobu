@@ -1,5 +1,11 @@
     
 <?php 
+    require "includes/funciones.php";
+    $autenticado = estadoAutenticado();
+
+    if(!$autenticado){
+        header('Location: login.php');
+    }
     //BASE DE DATOS
     require 'includes/config/database.php';
     $db = conectarDB();
@@ -74,6 +80,7 @@
         $errores[] = "El pdf anexo es muy pesada, maximo 2MB";
     }
 
+    
     if(empty($errores)){
         //SUBIDA DE ARCHIVOS
         $carpetaPdf = "pdf/";

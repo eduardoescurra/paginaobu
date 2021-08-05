@@ -1,5 +1,13 @@
     
-<?php include "includes/templates/header.php"; ?>
+<?php 
+    require "includes/funciones.php";
+    $autenticado = estadoAutenticado();
+
+    if(!$autenticado){
+        header('Location: login.php');
+    }
+include "includes/templates/header.php"; 
+?>
     <main class="contenedor baseP">
         <div class="principal r-gap">
             <section class="seccion">

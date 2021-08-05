@@ -1,12 +1,21 @@
     
 <?php
 
+    require "includes/funciones.php";
+    $autenticado = estadoAutenticado();
+
+    if(!$autenticado){
+        header('Location: login.php');
+    }
+
     //BASE DE DATOS
 require 'includes/config/database.php';
 
 $db = conectarDB();
 
-include "includes/templates/header.php"; ?>
+include "includes/templates/header.php"; 
+?>
+
     <main class="contenedor main">
         <div class="principal r-gap">
             <section class="seccion">

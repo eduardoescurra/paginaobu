@@ -101,10 +101,12 @@ input, .subirfile, select{
     height: 80%;
 }
 .alerta{
+    width: 100%;
     background-color: $blanco;
     p{
-        margin: 0.5rem 0;
+        padding: 0.2rem 0;
         background-color: rgb(255, 131, 162);
+        margin: 0.5rem 0;
         text-align: center;
         color: $blanco;
     }
