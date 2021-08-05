@@ -53,8 +53,38 @@
                         <h3>Anexos</h3>
                         <p>No</p>
                     </div>
+                </div>              
+              
+            </section>
+
+            <section class="seccion">
+                <div class="titulo bg-azul">
+                    <h2>Comentario de la Asistenta</h2>
+                </div>
+                <div class="info">
+                    <h3>Comentario</h3>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae officia quae doloremque, sapiente ab ipsam suscipit excepturi id porro quas facilis iusto in, dicta perspiciatis doloribus pariatur inventore illum est.</p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae officia quae doloremque, sapiente ab ipsam suscipit excepturi id porro quas facilis iusto in, dicta perspiciatis doloribus pariatur inventore illum est.</p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae officia quae doloremque, sapiente ab ipsam suscipit excepturi id porro quas facilis iusto in, dicta perspiciatis doloribus pariatur inventore illum est.</p>
+                    <h3>Datos para la entrevista</h3>
+                </div>
+                
+                <div class="info comentario">
+                <div class="columna">
+                        <h3>Día</h3>
+                        <p>05/08/2021</p>
+                    </div>
+                    <div class="columna">
+                        <h3>Hora</h3>
+                        <p>10:00 am</p>
+                    </div>
+                    <div class="columna">
+                        <h3>Enlace</h3>
+                        <p><a href="#">https://meet.google.com/wtb-fjus-vgt</a></p>
+                    </div>
                 </div>
             </section>
+           
             
         </div>
     </main>
