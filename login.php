@@ -29,20 +29,20 @@
 
             if($resultado->num_rows){
                 //revisar si el password es correcto
-                $usuario = mysqli_fetch_assoc($resultado);
+                $datos_usuario = mysqli_fetch_assoc($resultado);
 
                 //revisar si el password es correcto
-                $autenticado = password_verify($password, $usuario['password']);
+                $autenticado = password_verify($password, $datos_usuario['password']);
 
                 if($autenticado){
                     //el usuario esta autenticado ingresa al sistema
                     session_start();
 
                     //llenar de datos la sesion
-                    $_SESSION['usuario'] = $usuario['codigo'];
+                    $_SESSION['usuario'] = $datos_usuario['codigo'];
                     $_SESSION['login'] = true;
 
-                    header('Location: /admin');
+                    header('Location: index.php');
                 }else{
                     $errores[] = "La contraseña es incorrecta";
                 }
@@ -65,7 +65,7 @@
 </head>
 <body>
     <main class="flex">
-        <?php if($resultado == 1):?>
+        <?php if($resultado  === 1):?>
             <div class="mensaje exito">
                 <p>Cuenta Creada Correctamente</p> 
             </div>
@@ -74,6 +74,15 @@
             <img class="imagen-obu" src="build/img/logoobu.png" alt="imagen logo obu">
             <p class="usuario">Estudiante</p>
             <img class="imagen-login" src="build/img/login.png" alt="imagen login">
+            
+            <?php
+            foreach($errores as $error){ ?>
+                <div class="alerta">
+                    <p><?php echo $error ?></p> 
+                </div>
+                <?php
+            }
+            ?>
             
             <fieldset>
                 

@@ -9,9 +9,15 @@
     }
 
     //BASE DE DATOS
-require 'includes/config/database.php';
+    require 'includes/config/database.php';
+    $db = conectarDB();
 
-$db = conectarDB();
+    $codigo = $_SESSION['usuario'];
+
+    $query = "SELECT * FROM alumnos WHERE codigo = '${codigo}'";
+    $resultado = mysqli_query($db, $query);
+    $datos_alumno = mysqli_fetch_assoc($resultado);
+    
 
 include "includes/templates/header.php"; 
 ?>
@@ -23,7 +29,7 @@ include "includes/templates/header.php";
                     <h2>Bienvenido</h2>
                 </div>
                 <div class="info">
-                    <h3 class="postulante">!Hola David!</h3>
+                    <h3 class="postulante">!Hola <?php echo $datos_alumno['nombre'] ?>!</h3>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae officia quae doloremque, sapiente ab ipsam suscipit excepturi id porro quas facilis iusto in, dicta perspiciatis doloribus pariatur inventore illum est.</p>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur molestias quasi optio! Consequuntur expedita saepe libero accusantium non animi molestiae laborum dolore molestias hic ullam iste, sed consequatur maxime fuga.</p>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur molestias quasi optio! Consequuntur expedita saepe libero accusantium non animi molestiae laborum dolore molestias hic ullam iste, sed consequatur maxime fuga.</p>

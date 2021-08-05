@@ -10,13 +10,26 @@
     require 'includes/config/database.php';
     $db = conectarDB();
 
+    $codigo = $_SESSION['usuario'];
+    //DATOS DEL ALUMNO
+    $query = "SELECT * FROM alumnos WHERE codigo = '${codigo}'";
+    $resultado = mysqli_query($db, $query);
+    $datos_alumno = mysqli_fetch_assoc($resultado);
+
+    //ID DE LA ENCARGADA
+    $id_encargada = "";
+    $queryE = "SELECT encargadas.id FROM escuelas
+    LEFT JOIN facultades ON facultades.id = escuelas.facultadId
+    LEFT JOIN encargadas ON encargadas.id = facultades.encargadaId
+    WHERE escuelas.id = '${datos_alumno['escuelaId']}';";
+
+    $resultadoE = mysqli_query($db, $queryE);
+    $id_encargada = mysqli_fetch_assoc($resultadoE);
+
     //CONSULTAR CON LAS PROVINCIAS
     $consulta = "SELECT * FROM provincias";
     $resultadoP = mysqli_query($db, $consulta);
 
-    // echo "<pre>";
-    // var_dump($_POST);
-    // echo "</pre>";
 
  //ARREGLO CON MENSAJES DE ERRORES
  $errores = [];
@@ -36,18 +49,18 @@
     $anexo = $_FILES['anexo'];
 
     $dni = mysqli_real_escape_string($db, $_POST['dni']);
-    $email = mysqli_real_escape_string($db, $_POST['email']);
+    $email = mysqli_real_escape_string($db, filter_var( $_POST['email'], FILTER_VALIDATE_EMAIL));
     $celular = mysqli_real_escape_string($db, $_POST['celular']);
     $direccion = mysqli_real_escape_string($db, $_POST['direccion']);
     $provincia = mysqli_real_escape_string($db, $_POST['provincia']);
     $distrito = mysqli_real_escape_string($db, $_POST['distrito']);
-    $creado = date('Y/m/d');
+    $fecha = date('Y/m/d');
 
     if(!$dni){
         $errores[] = "El DNI es obligatorio";
     }
     if(!$email){
-        $errores[] = "El email es obligatorio";
+        $errores[] = "El email es obligatorio o no es válido";
     }
     if(!$celular){
         $errores[] = "El celular es obligatorio";
@@ -92,33 +105,51 @@
         //GENERAR NOMBR UNICO
         $nombrePdf1 = md5(uniqid(rand(),true)) . ".pdf";
         $nombrePdf2 = md5(uniqid(rand(),true)) . ".pdf";
+        $nombrePdf3 = "";
 
         //SUBIR IMAGEN
         move_uploaded_file($adni['tmp_name'], $carpetaPdf . $nombrePdf1);
         move_uploaded_file($luz['tmp_name'], $carpetaPdf . $nombrePdf2);
 
+        $anexoSINO = "No";
         if($anexo['size'] > 0){
             $nombrePdf3 = md5(uniqid(rand(),true)) . ".pdf";
             move_uploaded_file($anexo['tmp_name'], $carpetaPdf . $nombrePdf3);
+            //EXISTE ANEXO 
+            $anexoSINO = "Si";
         }
 
-          //INSERTAR EN LA BASE DE DATOS
-        //   $query = "INSERT INTO propiedades (titulo, precio, imagen, descripcion, habitaciones, wc, estacionamiento, creado, vendedorId) VALUES ( '$titulo', '$precio', '$nombreImagen', '$descripcion', '$habitaciones', '$wc', '$estacionamiento', '$creado', '$vendedorId' )";
+        //INSERTAR EN LA BASE DE DATOS
+        $query = "UPDATE alumnos SET 
+        dni = '${dni}', 
+        email = '${email}', 
+        celular = '${celular}', 
+        direccion = '${direccion}',
+        pdfdni = '${nombrePdf1}',
+        pdfluz = '${nombrePdf2}',
+        pdfanexos = '${nombrePdf3}',
+        distritoId = '${distrito}'
+        WHERE codigo = '${codigo}'";
 
-          //echo $query;
+        // echo "<pre>";
+        // var_dump($query);
+        // echo "</pre>";
 
-        //   $resultado = mysqli_query($db, $query);
+        //SUBIR A LA BASE DE DATOS DEL ALUMNO
+        $resultado = mysqli_query($db, $query);
 
-        //   if($resultado){
-        //       //REDIRECIONAR AL USUARIO
-              
-        //       header('Location: /index?resultado=1');
-        //   }
+        if($resultado){
+            //CREAR LA BECA
+            $query2 = "INSERT INTO becas (alumnoId, cicloId, fecha, anexo, estadoId, encargadaId) VALUES
+            ('${datos_alumno['id']}',1,'${fecha}','${anexoSINO}',1,'${id_encargada['id']}')";
+            $resultado2 = mysqli_query($db, $query2);
 
-          header('Location: /index?resultado=1');
+            if($resultado2){
+                //REDIRECIONAR AL USUARIO   
+                header('Location: index.php?resultado=1');
+            }  
+        }    
     }
-    
-
  }
 
 include "includes/templates/header.php"; ?>
@@ -134,7 +165,7 @@ include "includes/templates/header.php"; ?>
                 </div>
                 <?php
             }
-             ?>
+            ?>
             <form class="formularioP" method="POST" action="postular.php" enctype="multipart/form-data">                       
                     <fieldset>
                         <legend>Datos Personales</legend>
