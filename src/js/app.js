@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function(){
     evenListeners();
     // const pdf = document.querySelector(".verpdf");
     // pdf.onclick = verPdf;
+    mostrarAlerta();
 });
 
 // function verPdf(){
@@ -29,4 +30,12 @@ function navegacionResponsive(){
     }else{
         navegacion.classList.add("mostrar");
     }
+}
+
+function mostrarAlerta(){
+    Swal.fire(
+        'Good Job',
+        'You clicked the button',
+        'succes'
+    );
 }

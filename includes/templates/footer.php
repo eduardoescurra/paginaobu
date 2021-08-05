@@ -26,5 +26,6 @@
         <p class="derechos">© 2021 Universidad Nacional del Callao. Todos los derechos reservados.</p>
     </footer>
     <script src="build/js/bundle.min.js"></script>
+    <script src="assets/plugins/SweetAlert/dist/sweetalert2.all.min.js"></script>
 </body>
 </html>

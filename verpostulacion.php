@@ -43,60 +43,61 @@ include "includes/templates/header.php";
 ?>
     <main class="contenedor baseP">
         <div class="principal r-gap">
-            <section class="seccion">
-                <div class="titulo bg-rojo">
-                    <h2>Sin Postulación</h2>
-                </div>
-                <div class="info postular">
-                    <p>Parece que aún no realizas tu Postulación, haz click en: </p>
-                    <a href="postular.php">Postular</a>
-                </div>
-            </section>
-
-            <section class="seccion scroll">
-                <div class="titulo bg-azul">
-                    <h2>Ver postulacion</h2>
-                </div>
-                <div class="info tabla">
-                    <div class="columna">
-                        <h3>Id</h3>
-                        <p><?php echo $datos_beca['id'] ?></p>
+            <?php if(!$datos_beca) : ?>
+                <section class="seccion">
+                    <div class="titulo bg-rojo">
+                        <h2>Sin Postulación</h2>
                     </div>
-                    <div class="columna">
-                        <h3>Apellidos</h3>
-                        <p><?php echo $datos_alumno['apellido'] ?></p>
+                    <div class="info postular">
+                        <p>Parece que aún no realizas tu Postulación, haz click en: </p>
+                        <a href="postular.php">Postular</a>
                     </div>
-                    <div class="columna">
-                        <h3>Nombres</h3>
-                        <p><?php echo $datos_alumno['nombre'] ?></p>
-                    </div>        
-                    <div class="columna">
-                        <h3>Facultad</h3>
-                        <p><?php echo $datos_Facu['facultad'] ?></p> 
+                </section>
+            <?php else : ?>
+                <section class="seccion scroll">
+                    <div class="titulo bg-azul">
+                        <h2>Ver postulacion</h2>
                     </div>
-                    <div class="columna">
-                        <h3>Escuela</h3>
-                        <p><?php echo $datos_Facu['escuela'] ?></p>
+                    <div class="info tabla">
+                        <div class="columna">
+                            <h3>Id</h3>
+                            <p><?php echo $datos_beca['id'] ?></p>
+                        </div>
+                        <div class="columna">
+                            <h3>Apellidos</h3>
+                            <p><?php echo $datos_alumno['apellido'] ?></p>
+                        </div>
+                        <div class="columna">
+                            <h3>Nombres</h3>
+                            <p><?php echo $datos_alumno['nombre'] ?></p>
+                        </div>        
+                        <div class="columna">
+                            <h3>Facultad</h3>
+                            <p><?php echo $datos_Facu['facultad'] ?></p> 
+                        </div>
+                        <div class="columna">
+                            <h3>Escuela</h3>
+                            <p><?php echo $datos_Facu['escuela'] ?></p>
+                        </div>
+                        <div class="columna">
+                            <h3>Calendario</h3>
+                            <p><?php echo $datos_beca['ciclo'] ?></p>
+                        </div>
+                        <div class="columna">
+                            <h3>Fecha</h3>
+                            <p><?php echo $datos_beca['fecha'] ?></p>
+                        </div>
+                        <div class="columna">
+                            <h3>Anexos</h3>
+                            <p><?php echo $datos_beca['anexo'] ?></p>
+                        </div>
+                        <div class="columna">
+                            <h3>Estado</h3>
+                            <p><?php echo $datos_beca['estado'] ?></p>
+                        </div>
                     </div>
-                    <div class="columna">
-                        <h3>Calendario</h3>
-                        <p><?php echo $datos_beca['ciclo'] ?></p>
-                    </div>
-                    <div class="columna">
-                        <h3>Fecha</h3>
-                        <p><?php echo $datos_beca['fecha'] ?></p>
-                    </div>
-                    <div class="columna">
-                        <h3>Anexos</h3>
-                        <p><?php echo $datos_beca['anexo'] ?></p>
-                    </div>
-                    <div class="columna">
-                        <h3>Estado</h3>
-                        <p><?php echo $datos_beca['estado'] ?></p>
-                    </div>
-                </div>
-            </section>
-            
+                </section>
+            <?php endif;?>
             <section class="seccion">
                 <div class="titulo bg-azul">
                     <h2>Comentario de la Asistenta</h2>
