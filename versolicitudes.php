@@ -4,8 +4,8 @@
         <div class="principal r-gap">
             <section class="desplegable">
                 <div class="codigo">
-                    <label>Código</label>
-                    <input type="text" placeholder="Inserte código">
+                    <label for="codigo">Código</label>
+                    <input class="input" type="number" name="codigo" placeholder="Inserte código">
                 </div>
                 <div class="facultad">
                     <label>Facultad</label>
@@ -15,7 +15,7 @@
                     </select>
                 </div>
                 <div class="escuela">
-                <label>Escuela</label>
+                    <label>Escuela</label>
                     <select name="facultad">
                         <option value="">--Seleccione--</option>
                         <option value="">EPIS</option>
@@ -36,12 +36,12 @@
                 <div class="paginas">
                     <label>Paginas</label>
                         <ul class="items">
-                            <li class="item_previo"><a href="#"><</a></li>
-                            <li class="item_actual"><a href="#">1</a></li>
+                            <li class="item previo"><a href="#"><</a></li>
+                            <li class="item actual"><a href="#">1</a></li>
                             <li class="item"><a href="#">2</a></li>
                             <li class="item"><a href="#">3</a></li>
                             <li class="item"><a href="#">4</a></li>
-                            <li class="item_next"><a href="#">></a></li>
+                            <li class="item next"><a href="#">></a></li>
                         </ul>
                 </div>
             </section>
