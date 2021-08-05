@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function(){
     evenListeners();
     // const pdf = document.querySelector(".verpdf");
     // pdf.onclick = verPdf;
-    mostrarAlerta();
+    mostrarAlerta("!Éxito!","Cuenta Creada", "success");
 });
 
 // function verPdf(){
@@ -32,10 +32,10 @@ function navegacionResponsive(){
     }
 }
 
-function mostrarAlerta(){
+function mostrarAlerta(titulo, descripcion,tipoAlerta){
     Swal.fire(
-        'Good Job',
-        'You clicked the button',
-        'succes'
+        titulo,
+        descripcion,
+        tipoAlerta
     );
 }
