@@ -2,17 +2,37 @@
 <?php include "includes/templates/headerAdmi.php"; ?>
     <main class="contenedor base">
         <div class="principal r-gap">
-            <section class="desplegable">
-                <div class="facultad">
-                    <label></label>
-                </div>
-                <div class="escuela">
 
-                </div>
-                <div class="estado">
-
-                </div>
-            </section>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Points</th>
+                        <th>Team</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>David</td>
+                        <td>88,110</td>
+                        <td>dcode</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Carlos</td>
+                        <td>71,200</td>
+                        <td>Students</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Kirito</td>
+                        <td>010,1010</td>
+                        <td>dcode</td>
+                    </tr>
+                </tbody>
+            </table>
 
             <section class="seccion">
                 <div class="titulo bg-rojo">

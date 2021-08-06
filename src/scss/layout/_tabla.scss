@@ -1,0 +1,27 @@
+.table{
+    background-color: $blanco;
+    border-collapse: collapse;
+    margin: 2.5rem 0;
+    font-size: 0.9em;
+    border-radius: 0.5rem 0.5rem 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.15);
+    thead{
+        background-color: $verde;;
+        color: $blanco;
+        text-align: left;
+        font-weight: $bold;
+    }
+    th, td{
+        padding: 1.2rem 1.5rem;
+    }
+    tbody tr{
+        border-bottom: 1px solid #dddddd;
+    }
+    tbody tr:nth-of-type(even){
+        background-color: #f3f3f3;
+    }
+    tbody tr:last-of-type{
+        border-bottom: 2px solid $verde;
+    }
+}
