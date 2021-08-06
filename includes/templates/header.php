@@ -20,6 +20,8 @@
         });
     });
     </script>
+    <script src="build/js/bundle.min.js"></script>
+    <script src="assets/plugins/SweetAlert/dist/sweetalert2.all.min.js"></script>
 </head>
 <body>
     <header class="header">

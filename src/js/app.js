@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function(){
     evenListeners();
     // const pdf = document.querySelector(".verpdf");
     // pdf.onclick = verPdf;
-    mostrarAlerta("!Éxito!","Cuenta Creada", "success");
+    //mostrarAlerta("!Éxito!","Cuenta Creada", "success");
 });
 
 // function verPdf(){

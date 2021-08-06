@@ -95,60 +95,70 @@
 
     
     if(empty($errores)){
-        //SUBIDA DE ARCHIVOS
-        $carpetaPdf = "pdf/";
+        //VERIFICA SI YA SE POSTULO
+        if($datos_alumno['postulado'] == 'no'){
+            //SUBIDA DE ARCHIVOS
+            $carpetaPdf = "pdf/";
 
-        if(!is_dir($carpetaPdf)){
-            mkdir($carpetaPdf);
+            if(!is_dir($carpetaPdf)){
+                mkdir($carpetaPdf);
+            }
+
+            //GENERAR NOMBRE UNICO
+            $nombrePdf1 = md5(uniqid(rand(),true)) . ".pdf";
+            $nombrePdf2 = md5(uniqid(rand(),true)) . ".pdf";
+            $nombrePdf3 = "";
+
+            //SUBIR IMAGEN
+            move_uploaded_file($adni['tmp_name'], $carpetaPdf . $nombrePdf1);
+            move_uploaded_file($luz['tmp_name'], $carpetaPdf . $nombrePdf2);
+
+            $anexoSINO = "No";
+            if($anexo['size'] > 0){
+                $nombrePdf3 = md5(uniqid(rand(),true)) . ".pdf";
+                move_uploaded_file($anexo['tmp_name'], $carpetaPdf . $nombrePdf3);
+                //EXISTE ANEXO 
+                $anexoSINO = "Si";
+            }
+
+        
+            //INSERTAR EN LA BASE DE DATOS
+            $query = "UPDATE alumnos SET 
+            dni = '${dni}', 
+            email = '${email}', 
+            celular = '${celular}', 
+            direccion = '${direccion}',
+            pdfdni = '${nombrePdf1}',
+            pdfluz = '${nombrePdf2}',
+            pdfanexos = '${nombrePdf3}',
+            distritoId = '${distrito}',
+            postulado = 'si'
+            WHERE codigo = '${codigo}'";
+
+            // echo "<pre>";
+            // var_dump($query);
+            // echo "</pre>";
+
+            //SUBIR A LA BASE DE DATOS DEL ALUMNO
+            $resultado = mysqli_query($db, $query);
+
+            if($resultado){
+                //CREAR LA BECA
+                $query2 = "INSERT INTO becas (alumnoId, cicloId, fecha, anexo, estadoId, encargadaId) VALUES
+                ('${datos_alumno['id']}',1,'${fecha}','${anexoSINO}',1,'${id_encargada['id']}')";
+                $resultado2 = mysqli_query($db, $query2);
+
+                if($resultado2){
+                    //REDIRECIONAR AL USUARIO   
+                    header('Location: index.php?resultado=1');
+                }  
+            }    
+        }else{
+            //REDIRECIONAR AL USUARIO   
+            header('Location: index.php?resultado=2');
         }
 
-        //GENERAR NOMBR UNICO
-        $nombrePdf1 = md5(uniqid(rand(),true)) . ".pdf";
-        $nombrePdf2 = md5(uniqid(rand(),true)) . ".pdf";
-        $nombrePdf3 = "";
-
-        //SUBIR IMAGEN
-        move_uploaded_file($adni['tmp_name'], $carpetaPdf . $nombrePdf1);
-        move_uploaded_file($luz['tmp_name'], $carpetaPdf . $nombrePdf2);
-
-        $anexoSINO = "No";
-        if($anexo['size'] > 0){
-            $nombrePdf3 = md5(uniqid(rand(),true)) . ".pdf";
-            move_uploaded_file($anexo['tmp_name'], $carpetaPdf . $nombrePdf3);
-            //EXISTE ANEXO 
-            $anexoSINO = "Si";
-        }
-
-        //INSERTAR EN LA BASE DE DATOS
-        $query = "UPDATE alumnos SET 
-        dni = '${dni}', 
-        email = '${email}', 
-        celular = '${celular}', 
-        direccion = '${direccion}',
-        pdfdni = '${nombrePdf1}',
-        pdfluz = '${nombrePdf2}',
-        pdfanexos = '${nombrePdf3}',
-        distritoId = '${distrito}'
-        WHERE codigo = '${codigo}'";
-
-        // echo "<pre>";
-        // var_dump($query);
-        // echo "</pre>";
-
-        //SUBIR A LA BASE DE DATOS DEL ALUMNO
-        $resultado = mysqli_query($db, $query);
-
-        if($resultado){
-            //CREAR LA BECA
-            $query2 = "INSERT INTO becas (alumnoId, cicloId, fecha, anexo, estadoId, encargadaId) VALUES
-            ('${datos_alumno['id']}',1,'${fecha}','${anexoSINO}',1,'${id_encargada['id']}')";
-            $resultado2 = mysqli_query($db, $query2);
-
-            if($resultado2){
-                //REDIRECIONAR AL USUARIO   
-                header('Location: index.php?resultado=1');
-            }  
-        }    
+        
     }
  }
 

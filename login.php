@@ -1,6 +1,6 @@
 <?php
     //MUESTRA MENSAJE CONDICIONAL
-    $resultado = $_GET['resultado'] ?? null;
+    $resultadoC = $_GET['resultado'] ?? null;
 
     require "includes/config/database.php";
     $db = conectarDB();
@@ -62,14 +62,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="build/css/app.css">
+    <link rel="stylesheet" href="assets/plugins/SweetAlert/dist/sweetalert2.min.css">
+    <script src="assets/plugins/SweetAlert/dist/sweetalert2.all.min.js"></script>
 </head>
 <body>
     <main class="flex">
-        <?php if($resultado  === 1):?>
-            <div class="mensaje exito">
-                <p>Cuenta Creada Correctamente</p> 
-            </div>
-        <?php endif;?>
         <form class="formulario" method="POST" action="login.php">
             <img class="imagen-obu" src="build/img/logoobu.png" alt="imagen logo obu">
             <p class="usuario">Estudiante</p>
@@ -97,6 +94,15 @@
         </form> 
               
     </main>
-    
+    <?php if($resultadoC == 1){
+        ?>
+        <script type="text/javascript">
+        Swal.fire(
+        "!Éxito!",
+        "Cuenta Creada",
+        "success"
+        );</script>
+        <?php
+    } ?>
 </body>
 </html>

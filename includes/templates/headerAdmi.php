@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OBU</title>
     <link rel="stylesheet" href="build/css/app.css">
+    <link rel="stylesheet" href="assets/plugins/SweetAlert/dist/sweetalert2.min.css">
+    <script src="build/js/jquery-3.6.0.min.js"></script>
+    <script src="build/js/bundle.min.js"></script>
+    <script src="assets/plugins/SweetAlert/dist/sweetalert2.all.min.js"></script>
 </head>
 <body>
     <header class="header">

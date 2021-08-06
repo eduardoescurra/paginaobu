@@ -101,6 +101,8 @@
 .navegacion{
     &.nav-admi{
         @include tablet{
+            justify-content: center;
+            align-items: center;
             @include grid(3); 
         }
     }

@@ -2,12 +2,14 @@
 <?php
 
     require "includes/funciones.php";
-    $autenticado = estadoAutenticado();
+    $autenticado = estadoAutenticado(); 
 
     if(!$autenticado){
         header('Location: login.php');
     }
 
+    //MUESTRA MENSAJE CONDICIONAL
+    $resultadoP = $_GET['resultado'] ?? null;
     //BASE DE DATOS
     require 'includes/config/database.php';
     $db = conectarDB();
@@ -66,5 +68,20 @@ include "includes/templates/header.php";
             </section>
         </div>
     </main>
+    <?php if($resultadoP == 1) : ?>
+        <script type="text/javascript">
+        Swal.fire(
+        "!Éxito!",
+        "Postulación Enviada",
+        "success"
+        );</script>
+    <?php elseif($resultadoP == 2) : ?>
+        <script type="text/javascript">
+        Swal.fire(
+        "!Oops!",
+        "Parece que ya te postulaste",
+        "error"
+        );</script>
+    <?php endif; ?>
 <?php include "includes/templates/footer.php"; ?> 
 

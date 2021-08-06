@@ -8,3 +8,4 @@ function estadoAutenticado():bool{
     return false;
 }
 
+?>
