@@ -2,7 +2,8 @@
 function estadoAutenticado():bool{
     session_start();
     $autenticado = $_SESSION['login'];
-    if($autenticado){
+    $esalumno = $_SESSION['alumno'];
+    if($autenticado && $esalumno){
         return true;
     }
     return false;

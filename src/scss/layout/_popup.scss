@@ -21,6 +21,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        transition: 0.3s ease all;
+        transform: scale(0.7);
         opacity: 0;
         .contenedor-cerrar{
             width: 100%;
@@ -30,6 +32,7 @@
         }
         .imagen{
             width: 8rem;
+            opacity: 0;
         }
         .btn-cerrar-popup{
             font-size: 1.6rem;
@@ -46,6 +49,7 @@
             padding-top: 1rem;
             color: #595959;
             font-size: 2rem;
+            opacity: 0;
         }
         
     }
@@ -84,4 +88,37 @@
         }
     }
     
+}
+
+//ANIMACIONES
+
+.popup.active{
+    opacity: 1;
+    transform: scale(1);
+}
+.popup.active h3{
+    animation: entradaTitulo 0.5s ease .3s forwards;
+}
+.popup.active .imagen{
+    animation: entradaImagen 0.8s ease .3s forwards;
+}
+@keyframes entradaTitulo {
+    from{
+        transform: translateY(-2.5rem);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes entradaImagen {
+    from{
+        transform: rotate(0deg);
+        opacity: 0;
+    }
+    to{
+        transform: rotate(360deg);
+        opacity: 1;
+    }
 }

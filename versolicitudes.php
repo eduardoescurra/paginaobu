@@ -1,45 +1,77 @@
     
-<?php include "includes/templates/headerAdmi.php"; ?>
+<?php 
+    require "includes/funciones.php";
+    $autenticado = esAdmi(); 
+
+    if(!$autenticado){
+        header('Location: loginAdmi.php');
+    }
+
+    include "includes/config/database.php";
+    $db = conectarDB();
+
+    $query = "SELECT becas.id, alumnos.apellido, alumnos.nombre, facultades.nombre as 'facultad', escuelas.nombre as 'escuela', ciclos.nombre as 'ciclo', becas.fecha, becas.anexo, estados.nombre as 'estado' FROM becas
+    LEFT JOIN alumnos ON alumnos.id = becas.alumnoId
+    LEFT JOIN escuelas ON escuelas.id = alumnos.escuelaId
+    LEFT JOIN facultades ON facultades.id = escuelas.facultadId
+    LEFT JOIN ciclos ON ciclos.id = becas.cicloId
+    LEFT JOIN estados ON estados.id = becas.estadoId";
+
+    $resultadoConsulta = mysqli_query($db, $query);
+
+     //REVISAR EL POST
+     if($_SERVER['REQUEST_METHOD'] === 'POST'){
+        $id = $_POST['id'];
+        $id = filter_var($id, FILTER_VALIDATE_INT);
+        
+        if($id){
+            header('Location: revisarpostulacion.php?id='.$id);
+        }
+    }
+
+include "includes/templates/headerAdmi.php"; 
+?>
     <main class="contenedor">
         <div class="contenedor-tabla">
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Rank</th>
-                        <th>Name</th>
-                        <th>Points</th>
-                        <th>Team</th>
-                        <th>Points</th>
-                        <th>Team</th>
+                        <th>Id</th>
+                        <th>Apellidos</th>
+                        <th>Nombres</th>
+                        <th>Facultad</th>
+                        <th>Escuela</th>
+                        <th>Calendario</th>
+                        <th>Fecha</th>
+                        <th>Anexos</th>
+                        <th>Estado</th>
+                        <th>Acción</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>David</td>
-                        <td>88,110</td>
-                        <td>dcode</td>
-                        <td>88,110</td>
-                        <td>dcode</td>
+                    <?php while( $beca = mysqli_fetch_assoc($resultadoConsulta)) : ?>
+                    <tr> <!--//MOSTRAR LOS RESULTADOS-->
+                        <td><?php echo $beca['id']; ?></td>
+                        <td><?php echo $beca['apellido']; ?></td>
+                        <td><?php echo $beca['nombre']; ?></td>
+                        <td><?php echo $beca['facultad']; ?></td>
+                        <td><?php echo $beca['escuela']; ?></td>
+                        <td><?php echo $beca['ciclo']; ?></td>
+                        <td><?php echo $beca['fecha']; ?></td>
+                        <td><?php echo $beca['anexo']; ?></td>
+                        <td><?php echo $beca['estado']; ?></td>
+                        <td>
+                            <form  method="POST" class="w-100">
+                                <input type="hidden" value="<?php echo $beca['id'];?>" name="id">
+                                <input type="submit" value="Revisar" class="btn btn-revisar">
+                            </form>
+                        </td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Carlos</td>
-                        <td>71,200</td>
-                        <td>Students</td>
-                        <td>71,200</td>
-                        <td>Students</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Kirito</td>
-                        <td>010,1010</td>
-                        <td>dcode</td>
-                        <td>010,1010</td>
-                        <td>dcode</td>
+                    <?php endwhile; ?>
                 </tbody>
             </table>
         </div>
     </main>
+<?php include "includes/templates/popupAdmi.php"; ?>
 <?php include "includes/templates/footer.php"; ?> 
 

@@ -242,5 +242,6 @@ include "includes/templates/header.php"; ?>
         <h2>Visualizador PDF</h2>
         <object class="pdf" data="pdf/ejemplo.pdf" type="application/pdf"></object>
     </div> -->
+<?php include "includes/templates/popup.php"; ?>     
 <?php include "includes/templates/footer.php"; ?> 
 

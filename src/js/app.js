@@ -46,6 +46,7 @@ function abrirPopup(){
     const overlay = document.getElementById('overlay');
     const popup = document.getElementById('popup');
     const btnCerrarPopup = document.getElementById('btn-cerrar-popup');
+    const btnCerrar = document.querySelector('.btn-cancelar');
 
     btnAbriPopup.addEventListener('click', function(){
         overlay.classList.add("active");
@@ -55,4 +56,12 @@ function abrirPopup(){
         overlay.classList.remove("active");
         popup.classList.remove("active");
     });
+    btnCerrar.addEventListener('click', function(){
+        overlay.classList.remove("active");
+        popup.classList.remove("active");
+    });
+    // overlay.addEventListener('click',function(){
+    //     overlay.classList.remove("active");
+    //     popup.classList.remove("active");
+    // })
 }

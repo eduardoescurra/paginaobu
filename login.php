@@ -42,6 +42,7 @@
                         //llenar de datos la sesion
                         $_SESSION['usuario'] = $datos_usuario['codigo'];
                         $_SESSION['login'] = true;
+                        $_SESSION['alumno'] = true;
 
                         header('Location: index.php');
                     }else{

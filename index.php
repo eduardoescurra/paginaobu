@@ -83,5 +83,6 @@ include "includes/templates/header.php";
         "error"
         );</script>
     <?php endif; ?>
+<?php include "includes/templates/popup.php"; ?> 
 <?php include "includes/templates/footer.php"; ?> 
 

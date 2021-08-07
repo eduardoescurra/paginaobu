@@ -12,7 +12,19 @@
         
     }
 }
+.bg-amarillo{
+    background: $amarillo;
+}
 .r-gap{
     display: grid;
     row-gap: 2rem;
+}
+.btn-revisar{
+    cursor: pointer;
+    color: $blanco;
+    font-weight: $bold;
+    background: $amarillo;
+    &:hover{
+        background: lighten($amarillo, 15);
+    }
 }
