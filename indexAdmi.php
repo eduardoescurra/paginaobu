@@ -1,5 +1,13 @@
     
-<?php include "includes/templates/headerAdmi.php"; ?>
+<?php 
+  require "includes/funciones.php";
+  $autenticado = esAdmi(); 
+
+  if(!$autenticado){
+      header('Location: loginAdmi.php');
+  }
+include "includes/templates/headerAdmi.php"; 
+?>
     <main class="contenedor main">
         <div class="principal r-gap">
             <section class="seccion">

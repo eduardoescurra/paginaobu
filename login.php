@@ -33,18 +33,22 @@
 
                 //revisar si el password es correcto
                 $autenticado = password_verify($password, $datos_usuario['password']);
+                //VERIFICA LOS PERMISOS
+                if($datos_usuario['rolId'] == 1){
+                    if($autenticado){
+                        //el usuario esta autenticado ingresa al sistema
+                        session_start();
 
-                if($autenticado){
-                    //el usuario esta autenticado ingresa al sistema
-                    session_start();
+                        //llenar de datos la sesion
+                        $_SESSION['usuario'] = $datos_usuario['codigo'];
+                        $_SESSION['login'] = true;
 
-                    //llenar de datos la sesion
-                    $_SESSION['usuario'] = $datos_usuario['codigo'];
-                    $_SESSION['login'] = true;
-
-                    header('Location: index.php');
+                        header('Location: index.php');
+                    }else{
+                        $errores[] = "La contraseña es incorrecta";
+                    }
                 }else{
-                    $errores[] = "La contraseña es incorrecta";
+                    $errores[] = "No tiene permiso para acceder";
                 }
             }else{
                 $errores[] = "El usuario No Existe";

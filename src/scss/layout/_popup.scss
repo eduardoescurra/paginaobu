@@ -1,0 +1,87 @@
+.overlay{
+    background-color: rgba($color: #000000, $alpha: 0.3);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    &.active{
+        visibility:visible;
+    }
+    .popup{
+        background-color: #f8f8f8;
+        box-shadow: 0 0 0.5rem 0 rgba($color: #000000, $alpha: 0.3);
+        border-radius: 0.5rem;
+        padding: 2rem;
+        width: 30rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        opacity: 0;
+        .contenedor-cerrar{
+            width: 100%;
+        }
+        a{
+            text-align: center;
+        }
+        .imagen{
+            width: 8rem;
+        }
+        .btn-cerrar-popup{
+            font-size: 1.6rem;
+            font-weight: $bold;
+            display: block;
+            text-align: right;
+            color: #bbbbbb;
+            transition: 0.3s ease all;
+            &:hover{
+                color: #000000;
+            }
+        }
+        h3{
+            padding-top: 1rem;
+            color: #595959;
+            font-size: 2rem;
+        }
+        
+    }
+}
+.botones{
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    @include tablet{
+        flex-direction: row;
+    }
+    .btn{
+        color: $blanco;
+        font-size: 1.2rem;
+        padding: 1rem 2rem;
+        border-radius: 0.5rem;
+        transition: 0.3s ease all;
+    }
+    .btn-cancelar{
+        margin-bottom: 1rem;
+        background: #7367F0;
+        @include tablet{
+            margin-bottom: 0;
+        }
+        &:hover{
+            background: lighten(#7367F0, 5);
+        }
+    }
+    .btn-cerrar{ 
+        background: $rojo;
+        @include tablet{
+            margin-left: 1rem;
+        }
+        &:hover{
+            background: lighten($rojo, 10);
+        }
+    }
+    
+}

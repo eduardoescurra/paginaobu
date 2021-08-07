@@ -1,6 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", function(){
     evenListeners();
+    abrirPopup();
     // const pdf = document.querySelector(".verpdf");
     // pdf.onclick = verPdf;
     //mostrarAlerta("!Éxito!","Cuenta Creada", "success");
@@ -38,4 +39,20 @@ function mostrarAlerta(titulo, descripcion,tipoAlerta){
         descripcion,
         tipoAlerta
     );
+}
+
+function abrirPopup(){
+    const btnAbriPopup = document.getElementById('btn-abrir-popup');
+    const overlay = document.getElementById('overlay');
+    const popup = document.getElementById('popup');
+    const btnCerrarPopup = document.getElementById('btn-cerrar-popup');
+
+    btnAbriPopup.addEventListener('click', function(){
+        overlay.classList.add("active");
+        popup.classList.add("active");
+    });
+    btnCerrarPopup.addEventListener('click', function(){
+        overlay.classList.remove("active");
+        popup.classList.remove("active");
+    });
 }

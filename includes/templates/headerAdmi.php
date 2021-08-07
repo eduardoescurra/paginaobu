@@ -15,7 +15,7 @@
     <header class="header">
         <div class="contenedor contenido-header">
             <div class="contenido-logo">
-                <a href="../../index.php" ><img class="logo" src="build/img/logoobu.png" alt="logo de OBU"></a>
+                <a href="indexAdmi.php" ><img class="logo" src="build/img/logoobu.png" alt="logo de OBU"></a>
                 <div class="separa"></div>
                 <h2>Administrador</h2>
             </div>
@@ -31,7 +31,7 @@
 
             <nav class="navegacion nav-admi">
 
-                <a href="../../index.php" class="icono">
+                <a href="indexAdmi.php" class="icono">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="20" height="20" viewBox="0 0 24 24" stroke-width="2.5" stroke="#828282" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                     <polyline points="5 12 3 12 12 3 21 12 19 12" />
@@ -41,7 +41,7 @@
                     <p class="texto">Inicio</p>
                 </a>    
 
-                <a href="#" class="icono">
+                <a href="versolicitudes.php" class="icono">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="20" height="20" viewBox="0 0 24 24" stroke-width="2.5" stroke="#828282" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                     <circle cx="12" cy="12" r="2" />
@@ -50,7 +50,7 @@
                     <p class="texto">Ver Postulaciónes</p>
                 </a>
 
-                <a href="#" class="icono">
+                <a href="cerrar-sesionAdmi.php" class="icono">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout" width="28" height="28" viewBox="0 0 24 24" stroke-width="2.5" stroke="#fd0061" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                     <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />

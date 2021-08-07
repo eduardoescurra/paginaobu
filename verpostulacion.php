@@ -54,49 +54,38 @@ include "includes/templates/header.php";
                     </div>
                 </section>
             <?php else : ?>
-                <section class="seccion scroll">
-                    <div class="titulo bg-azul">
-                        <h2>Ver postulacion</h2>
-                    </div>
-                    <div class="info tabla">
-                        <div class="columna">
-                            <h3>Id</h3>
-                            <p><?php echo $datos_beca['id'] ?></p>
-                        </div>
-                        <div class="columna">
-                            <h3>Apellidos</h3>
-                            <p><?php echo $datos_alumno['apellido'] ?></p>
-                        </div>
-                        <div class="columna">
-                            <h3>Nombres</h3>
-                            <p><?php echo $datos_alumno['nombre'] ?></p>
-                        </div>        
-                        <div class="columna">
-                            <h3>Facultad</h3>
-                            <p><?php echo $datos_Facu['facultad'] ?></p> 
-                        </div>
-                        <div class="columna">
-                            <h3>Escuela</h3>
-                            <p><?php echo $datos_Facu['escuela'] ?></p>
-                        </div>
-                        <div class="columna">
-                            <h3>Calendario</h3>
-                            <p><?php echo $datos_beca['ciclo'] ?></p>
-                        </div>
-                        <div class="columna">
-                            <h3>Fecha</h3>
-                            <p><?php echo $datos_beca['fecha'] ?></p>
-                        </div>
-                        <div class="columna">
-                            <h3>Anexos</h3>
-                            <p><?php echo $datos_beca['anexo'] ?></p>
-                        </div>
-                        <div class="columna">
-                            <h3>Estado</h3>
-                            <p><?php echo $datos_beca['estado'] ?></p>
-                        </div>
-                    </div>
-                </section>
+
+                <div class="contenedor-tabla">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Apellidos</th>
+                                <th>Nombres</th>
+                                <th>Facultad</th>
+                                <th>Escuela</th>
+                                <th>Calendario</th>
+                                <th>Fecha</th>
+                                <th>Anexos</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><?php echo $datos_beca['id'] ?></td>
+                                <td><?php echo $datos_alumno['apellido'] ?></td>
+                                <td><?php echo $datos_alumno['nombre'] ?></td>
+                                <td><?php echo $datos_Facu['facultad'] ?></td>
+                                <td><?php echo $datos_Facu['escuela'] ?></td>
+                                <td><?php echo $datos_beca['ciclo'] ?></td>
+                                <td><?php echo $datos_beca['fecha'] ?></td>
+                                <td><?php echo $datos_beca['anexo'] ?></td>
+                                <td><?php echo $datos_beca['estado'] ?></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
             <?php endif;?>
             <section class="seccion">
                 <div class="titulo bg-azul">
@@ -127,5 +116,20 @@ include "includes/templates/header.php";
             </section>
         </div>
     </main>
+
+    <div class="overlay" id="overlay">
+        <div class="popup" id="popup">
+            <div class="contenedor-cerrar">
+                <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup">x</a>
+            </div>
+            <img class="imagen" src="build/img/pregunta.png" alt="pregunta">
+            <h3>¿Desea cerrar Sesión?</h3>
+            <div class="botones">
+                <a href="#" class="btn btn-cancelar">Cancelar</a>
+                <a href="#" class="btn btn-cerrar">Cerrar Sesión</a>
+            </div>
+            
+        </div>
+    </div>
 <?php include "includes/templates/footer.php"; ?> 
 
