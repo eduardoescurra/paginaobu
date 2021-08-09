@@ -3,13 +3,15 @@
     require "includes/funciones.php";
     $autenticado = estadoAutenticado();
 
-    //BASE DE DATOS
-    require 'includes/config/database.php';
-    $db = conectarDB();
+    
 
     if(!$autenticado){
         header('Location: login.php');
     }
+
+    //BASE DE DATOS
+    require 'includes/config/database.php';
+    $db = conectarDB();
 
     $codigo = $_SESSION['usuario'];
 

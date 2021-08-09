@@ -9,6 +9,18 @@
     <link rel="stylesheet" href="assets/plugins/SweetAlert/dist/sweetalert2.min.css">
     <script src="build/js/jquery-3.6.0.min.js"></script>
     <script src="build/js/bundle.min.js"></script>
+    <!-- <script language="javascript">
+        $(document).ready(function(){
+            $("#btn-pdf1").on('click', function (e) {
+                e.preventDefault();
+                console.log("Hola");
+                var pdf_name = $(this).val();
+                $.post("visualizarpdf.php", { pdf_name: pdf_name }, function(data) {
+                    $("#view-pdf").html(data);
+                });	
+            });
+        });
+    </script> -->
     <script src="assets/plugins/SweetAlert/dist/sweetalert2.all.min.js"></script>
 </head>
 <body>

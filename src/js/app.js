@@ -2,21 +2,10 @@
 document.addEventListener("DOMContentLoaded", function(){
     evenListeners();
     abrirPopup();
-    // const pdf = document.querySelector(".verpdf");
-    // pdf.onclick = verPdf;
-    //mostrarAlerta("!Éxito!","Cuenta Creada", "success");
+    abrirPDF();
+    abrirPDF2();
+    abrirPDF3();
 });
-
-// function verPdf(){
-//     const dni = document.getElementById("adni");
-//     //nombre del pdf seleccionado
-//     if(dni.files[0] != null){
-//         console.log(dni.files[0].name);
-//     }else{
-//         console.log("Ningun archivo seleccionado");
-//     }
-    
-// }
 
 function evenListeners(){
     const mobileMenu = document.querySelector(".mobile-menu");
@@ -64,4 +53,49 @@ function abrirPopup(){
     //     overlay.classList.remove("active");
     //     popup.classList.remove("active");
     // })
+}
+function abrirPDF(){
+    const btnAbrirPdf = document.getElementById("btn-pdf1");
+    const overlayPdf = document.getElementById("overlay-pdf");
+    const contenedorPdf = document.getElementById("contenedor-pdf");
+    const btnCerrarPdf = document.getElementById("btn-cerrar-pdf");
+
+    btnAbrirPdf.addEventListener('click', function(){
+        overlayPdf.classList.add("active");
+        contenedorPdf.classList.add("active");
+    });
+    btnCerrarPdf.addEventListener('click', function(){
+        overlayPdf.classList.remove("active");
+        contenedorPdf.classList.remove("active");
+    });
+}
+function abrirPDF2(){
+    const btnAbrirPdf2 = document.getElementById("btn-pdf2");
+    const overlayPdf2 = document.getElementById("overlay-pdf2");
+    const contenedorPdf2 = document.getElementById("contenedor-pdf2");
+    const btnCerrarPdf2 = document.getElementById("btn-cerrar-pdf2");
+
+    btnAbrirPdf2.addEventListener('click', function(){
+        overlayPdf2.classList.add("active");
+        contenedorPdf2.classList.add("active");
+    });
+    btnCerrarPdf2.addEventListener('click', function(){
+        overlayPdf2.classList.remove("active");
+        contenedorPdf2.classList.remove("active");
+    });
+}
+function abrirPDF3(){
+    const btnAbrirPdf3 = document.getElementById("btn-pdf3");
+    const overlayPdf3 = document.getElementById("overlay-pdf3");
+    const contenedorPdf3 = document.getElementById("contenedor-pdf3");
+    const btnCerrarPdf3 = document.getElementById("btn-cerrar-pdf3");
+
+    btnAbrirPdf3.addEventListener('click', function(){
+        overlayPdf3.classList.add("active");
+        contenedorPdf3.classList.add("active");
+    });
+    btnCerrarPdf3.addEventListener('click', function(){
+        overlayPdf3.classList.remove("active");
+        contenedorPdf3.classList.remove("active");
+    });
 }

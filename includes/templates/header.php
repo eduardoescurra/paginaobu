@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="assets/plugins/SweetAlert/dist/sweetalert2.min.css">
     <script src="build/js/jquery-3.6.0.min.js"></script>
     <script language="javascript">
+
     $(document).ready(function(){
         $("#provincia").on('change', function () {
             $("#provincia option:selected").each(function () {
@@ -19,6 +20,8 @@
             });
         });
     });
+
+
     </script>
     <script src="build/js/bundle.min.js"></script>
     <script src="assets/plugins/SweetAlert/dist/sweetalert2.all.min.js"></script>

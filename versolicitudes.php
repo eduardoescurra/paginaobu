@@ -41,7 +41,7 @@ include "includes/templates/headerAdmi.php";
                         <th>Nombres</th>
                         <th>Facultad</th>
                         <th>Escuela</th>
-                        <th>Calendario</th>
+                        <th>Ciclo</th>
                         <th>Fecha</th>
                         <th>Anexos</th>
                         <th>Estado</th>
