@@ -35,7 +35,7 @@
                 <h2>Estudiante</h2>
             </div>
 
-            <div class="mobile-menu">
+            <div id="mobile-menu" class="mobile-menu">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="28" height="28" viewBox="0 0 24 24" stroke-width="3" stroke="#828282" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                 <line x1="4" y1="6" x2="20" y2="6" />
@@ -81,7 +81,18 @@
                         <path d="M10 5a2 2 0 0 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" />
                         <path d="M9 17v1a3 3 0 0 0 6 0v-1" />
                         </svg>
-                        <p class="mensaje">0</p>
+                        <?php
+                        $codigo = $_SESSION['usuario'];
+                        $queryAlerta = "SELECT estados.id FROM alumnos 
+                        LEFT JOIN becas ON becas.alumnoId = alumnos.id
+                        LEFT JOIN estados ON estados.id = becas.estadoId
+                        WHERE alumnos.codigo = '${codigo}'";
+                        $resultadoAlerta = mysqli_query($db, $queryAlerta);
+                        $sihayalerta = mysqli_fetch_assoc($resultadoAlerta);
+
+                        if($sihayalerta['id'] == 2 || $sihayalerta['id'] == 4) : ?>
+                            <p class="mensaje">1</p>
+                        <?php endif;?>
                         
                     </div>  
                     

@@ -1,5 +1,5 @@
 .contenedor-tabla{
-    margin: 2.5rem 0;
+    margin: 5rem 0;
     overflow-x: auto;
     
     box-shadow: 0 0.1rem 0.4rem rgba(63, 63, 63, 0.459);
@@ -52,6 +52,9 @@
         }
         &.azul{
             background-color: $azul;
+        }
+        &.naranja{
+            background-color: $naranja;
         }
     }
 }

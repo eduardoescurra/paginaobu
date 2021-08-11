@@ -8,6 +8,8 @@
     if(!$autenticado){
         header('Location: login.php');
     }
+    //MENSAJE CONDICIONAL
+    $resultadoCorreccion = $_GET['resultado'] ?? null;
 
     //BASE DE DATOS
     require 'includes/config/database.php';
@@ -45,7 +47,7 @@ include "includes/templates/header.php";
 ?>
     <main class="contenedor baseP contenedor-mensaje">
         <?php @include "includes/templates/mensaje.php" ?>
-        <div class="principal r-gap">
+        <div class="principal r-ver">
             <?php if(!$datos_beca) : ?>
                 <section class="seccion">
                     <div class="titulo bg-rojo">
@@ -83,7 +85,17 @@ include "includes/templates/header.php";
                                 <td><?php echo $datos_beca['ciclo'] ?></td>
                                 <td><?php echo $datos_beca['fecha'] ?></td>
                                 <td><?php echo $datos_beca['anexo'] ?></td>
-                                <td><?php echo $datos_beca['estado'] ?></td>
+                                <td><p class="estado <?php
+                                if($datos_beca['estado']=="EN CORRECCION"){
+                                    echo "rojo";
+                                }elseif($datos_beca['estado']=="REVISADO"){
+                                    echo "verde";
+                                }elseif($datos_beca['estado']=="REUNION"){
+                                    echo "azul";
+                                }elseif($datos_beca['estado']=="CORREGIDO"){
+                                    echo "naranja";
+                                }
+                                ?>"><?php echo $datos_beca['estado'] ?></p></td>
                             </tr>
                         </tbody>
                     </table>
@@ -93,6 +105,14 @@ include "includes/templates/header.php";
         <?php @include "includes/templates/comentario.php" ?>    
         </div>
     </main>
+    <?php if($resultadoCorreccion == 4) : ?>
+        <script type="text/javascript">
+        Swal.fire(
+        "!Éxito!",
+        "Postulación Corregida",
+        "success"
+        );</script>
+    <?php endif; ?>
 
 <?php include "includes/templates/popup.php"; ?>     
 <?php include "includes/templates/footer.php"; ?> 

@@ -60,12 +60,14 @@ include "includes/templates/headerAdmi.php";
                         <td><?php echo $beca['fecha']; ?></td>
                         <td><?php echo $beca['anexo']; ?></td>
                         <td><p class="estado <?php 
-                        if($beca['estado']=="CORRECCION"){
+                        if($beca['estado']=="EN CORRECCION"){
                             echo "rojo";
                         }elseif($beca['estado']=="REVISADO"){
                             echo "verde";
                         }elseif($beca['estado']=="REUNION"){
                             echo "azul";
+                        }elseif($beca['estado']=="CORREGIDO"){
+                            echo "naranja";
                         }
                         ?>"><?php echo $beca['estado']; ?></p> </td>
                         <td>

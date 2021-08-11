@@ -36,7 +36,7 @@
         
         if(isset($_POST['aprobar'])){
             //CAMBIAR ESTADO DE LA BECA A REVISADO
-            $queryActualizar = "UPDATE becas SET estadoId = 3 WHERE id = '${datos_beca['id']}'";
+            $queryActualizar = "UPDATE becas SET estadoId = 5 WHERE id = '${datos_beca['id']}'";
             $resultadoActualizar = mysqli_query($db, $queryActualizar);
             if($resultadoActualizar){
                 header('Location: versolicitudes.php?resultado=1');

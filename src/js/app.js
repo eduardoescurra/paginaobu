@@ -36,14 +36,18 @@ function abrirMensaje(){
     const btnVerMensaje = document.getElementById('ver-mensaje');
     const overlayPopup = document.getElementById('popup-mensaje');
     const btnCerrarMensaje = document.getElementById('btn-cerrar-mensaje');
+    const btnCerrarMobile = document.getElementById('mobile-menu');
 
-    if(btnVerMensaje === null || overlayPopup === null || btnCerrarMensaje === null){
+    if(btnVerMensaje === null || overlayPopup === null || btnCerrarMensaje === null || btnCerrarMobile === null){
         
     }else{
         btnVerMensaje.addEventListener('click', function(){
             overlayPopup.classList.add("active");
         });
         btnCerrarMensaje.addEventListener('click', function(){
+            overlayPopup.classList.remove("active");
+        });
+        btnCerrarMobile.addEventListener('click', function(){
             overlayPopup.classList.remove("active");
         });
     }
