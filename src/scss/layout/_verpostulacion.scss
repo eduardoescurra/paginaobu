@@ -56,3 +56,14 @@
         }
     }
 }
+.btn-regresar-revisar{
+    display: inline-block;
+    background-color: $naranja;
+    padding: 1rem 1.5rem;
+    margin: 2rem 0 0 2rem;
+    color: $blanco;
+    border-radius: 0.3rem;
+    &:hover{
+        background-color: lighten($naranja, 10);
+    }
+}

@@ -132,7 +132,8 @@
             pdfluz = '${nombrePdf2}',
             pdfanexos = '${nombrePdf3}',
             distritoId = '${distrito}',
-            postulado = 'si'
+            postulado = 'si',
+            puntajeAnexo = 0
             WHERE codigo = '${codigo}'";
 
             // echo "<pre>";
@@ -144,8 +145,8 @@
 
             if($resultado){
                 //CREAR LA BECA
-                $query2 = "INSERT INTO becas (alumnoId, cicloId, fecha, anexo, estadoId, encargadaId) VALUES
-                ('${datos_alumno['id']}',1,'${fecha}','${anexoSINO}',1,'${id_encargada['id']}')";
+                $query2 = "INSERT INTO becas (alumnoId, cicloId, fecha, anexo, puntaje, estadoId, encargadaId) VALUES
+                ('${datos_alumno['id']}',1,CURDATE(),'${anexoSINO}',0,1,'${id_encargada['id']}')";
                 $resultado2 = mysqli_query($db, $query2);
 
                 if($resultado2){

@@ -293,3 +293,20 @@
         opacity: 1;
     }
 }
+.puntaje{
+    label, input{
+        width: 100%;
+        display: block;
+        
+    }
+    @include tablet{
+        label{
+            text-align: right;
+        }
+        margin-top: 2rem;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        column-gap: 2rem;
+        align-items: center;
+    }
+}

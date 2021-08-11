@@ -20,26 +20,51 @@
     LEFT JOIN ciclos ON ciclos.id = becas.cicloId
     LEFT JOIN estados ON estados.id = becas.estadoId
     WHERE becas.id = '${id_beca}'";
+
+    //DATOS DE LOS PUNTAJES
+    $querypuntaje = "SELECT promedios.promedio, distritos.puntaje, alumnos.puntajeAnexo FROM alumnos
+    LEFT JOIN promedios ON promedios.alumnoId = alumnos.id
+    LEFT JOIN distritos ON distritos.id = alumnos.distritoId
+    LEFT JOIN becas ON becas.alumnoId = alumnos.id
+    WHERE becas.id = $id_beca";
+    $resultadopuntaje = mysqli_query($db, $querypuntaje);
+    $datosPuntaje = mysqli_fetch_assoc($resultadopuntaje);
+    // echo "<pre>";
+    // var_dump($datosPuntaje);
+    // echo "</pre>";
     
     $resultadoBeca = mysqli_query($db, $queryBeca);
     $datos_beca = mysqli_fetch_assoc($resultadoBeca);
-
+    if(!$datos_beca['id_alumno']){
+        header('Location: versolicitudes.php');
+    }
+    
     $queryPDF = "SELECT pdfdni, pdfluz, pdfanexos FROM alumnos
     WHERE id = '${datos_beca['id_alumno']}'";
     $resultadoPDF = mysqli_query($db, $queryPDF);
     $datosPDF = mysqli_fetch_assoc($resultadoPDF);
 
     $errores = [];
-
+    $sumatotal = 0;
      //EJECUTAR EL CODIGO DESPUES DE QUE EL USUARIO ENVIA EL FORMULARIO
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        
+        // echo "<pre>";
+        // var_dump($_POST);
+        // echo "</pre>";
         if(isset($_POST['aprobar'])){
-            //CAMBIAR ESTADO DE LA BECA A REVISADO
-            $queryActualizar = "UPDATE becas SET estadoId = 5 WHERE id = '${datos_beca['id']}'";
-            $resultadoActualizar = mysqli_query($db, $queryActualizar);
-            if($resultadoActualizar){
-                header('Location: versolicitudes.php?resultado=1');
+            if($_POST['puntajeanexo']>50 || $_POST['puntajeanexo']<0){
+                $errores[] = "El puntaje del anexo es incorrecto";
+            }else{
+                $queryAnexo = "INSERT INTO alumnos (puntajeAnexo) VALUES (${_POST['puntajeanexo']}) WHERE id = ${datos_beca['id_alumno']}";
+                $resultadoAnexo = mysqli_query($db, $queryAnexo);
+
+                $sumatotal = floatval($datosPuntaje['promedio']) + floatval($datosPuntaje['puntaje']) + floatval($_POST['puntajeanexo']);
+                //CAMBIAR ESTADO DE LA BECA A REVISADO
+                $queryActualizar = "UPDATE becas SET estadoId = 5, puntaje = $sumatotal WHERE id = '${datos_beca['id']}'";
+                $resultadoActualizar = mysqli_query($db, $queryActualizar);
+                if($resultadoActualizar){
+                    header('Location: versolicitudes.php?resultado=1');
+                }
             }
         }
         if(isset($_POST['corregir'])){
@@ -109,6 +134,7 @@ include "includes/templates/headerAdmi.php";
             <div class="titulo bg-rojo">
                 <h2>Revisión</h2>
             </div>
+            <a class="btn-regresar-revisar" href="versolicitudes.php">Regresar</a>
             <div class="info">
                 <?php
                 foreach($errores as $error){ ?>
@@ -162,14 +188,21 @@ include "includes/templates/headerAdmi.php";
                     <h3 class="titulo">Recibo de Luz:</h3>
                     <button id="btn-pdf2" class="visualizar visualizarLuz" >Visualizar</button>
                 </div>
-                <div class="datos">
-                    <h3 class="titulo">Anexos:</h3>
-                    <button id="btn-pdf3" class="visualizar visualizarLuz" >Visualizar</button>
-                </div>
+                <?php if($datos_beca['anexo'] == 'Si') : ?>
+                    <div class="datos">
+                        <h3 class="titulo">Anexos:</h3>
+                        <button id="btn-pdf3" class="visualizar visualizarLuz" >Visualizar</button>
+                    </div>
+                <?php endif; ?>
 
                 <!-- FORMULARIO CORRECCION -->
                 <form class="revision-datos"  method="POST">
-
+                    <?php if($datos_beca['anexo'] == 'Si') : ?>
+                    <div class="puntaje">
+                        <label for="puntajeanexo">Puntaje del Anexo:</label>
+                        <input id="puntajeanexo" type="number" name="puntajeanexo" placeholder="0" value="<?php echo $datosPuntaje['puntajeAnexo'] ?>">
+                    </div>
+                    <?php endif; ?>
                     <div id="overlay-corregir" class="overlay-corregir">
                         <div id="popup-corregir" class="popup-corregir">
                             <p id="btn-cerrar-corregir" class="btn-cerrar-corregir">x</p>
@@ -226,19 +259,18 @@ include "includes/templates/headerAdmi.php";
             </object>
         </div>
     </div>
-
     <?php if($datos_beca['anexo'] == 'Si') : ?>
-    <div id="overlay-pdf3" class="overlay-pdf">
-        <div id="contenedor-pdf3" class="contenedor-pdf">
-            <button id="btn-cerrar-pdf3" class="btn-cerrar-pdf">x</button>
-            <object class="view-pdf" data="pdf/<?php echo $datosPDF['pdfanexos'] ?>" type="application/pdf">
-                    <p>Parece que tu navegador no soporta PDF</p>
-                    <a href="pdf/<?php echo $datosPDF['pdfanexos'] ?>" download="PDF-ANEXOS.pdf">Descargar PDF</a>
-            </object>
+        <div id="overlay-pdf3" class="overlay-pdf">
+            <div id="contenedor-pdf3" class="contenedor-pdf">
+                <button id="btn-cerrar-pdf3" class="btn-cerrar-pdf">x</button>
+                <object class="view-pdf" data="pdf/<?php echo $datosPDF['pdfanexos'] ?>" type="application/pdf">
+                        <p>Parece que tu navegador no soporta PDF</p>
+                        <a href="pdf/<?php echo $datosPDF['pdfanexos'] ?>" download="PDF-ANEXOS.pdf">Descargar PDF</a>
+                </object>
+            </div>
         </div>
-    </div>
     <?php endif; ?>
-
+        
     
 <?php include "includes/templates/popupAdmi.php"; ?>
 <?php include "includes/templates/footer.php"; ?> 

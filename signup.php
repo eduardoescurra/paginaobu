@@ -52,7 +52,7 @@
                 if($resultado->num_rows){
                     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
                     //QUERY PARA CREAR AL USUARIO
-                    $query = "INSERT INTO usuarios (codigo, password) VALUES ('${codigo}','${passwordHash}')";
+                    $query = "INSERT INTO usuarios (codigo, password,rolId) VALUES ('${codigo}','${passwordHash}',1)";
                     //AGREGAR A LA BASE DE DATOS
                     mysqli_query($db, $query);
 
