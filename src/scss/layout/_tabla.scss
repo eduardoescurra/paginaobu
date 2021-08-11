@@ -35,4 +35,23 @@
     tbody tr:last-of-type{
         border-bottom: 2px solid $verde;
     }
+    .estado{
+        margin: 0;
+        padding: 0.5rem;
+        border-radius: 0.3rem;
+        background-color: $gris;
+        color: $blanco;
+        font-size: 1.2rem;
+        text-align: center;
+        font-weight: $bold;
+        &.verde{
+            background-color: $verde;
+        }
+        &.rojo{
+            background-color: $rojo;
+        }
+        &.azul{
+            background-color: $azul;
+        }
+    }
 }

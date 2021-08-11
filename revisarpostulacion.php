@@ -29,15 +29,95 @@
     $resultadoPDF = mysqli_query($db, $queryPDF);
     $datosPDF = mysqli_fetch_assoc($resultadoPDF);
 
+    $errores = [];
+
+     //EJECUTAR EL CODIGO DESPUES DE QUE EL USUARIO ENVIA EL FORMULARIO
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        
+        if(isset($_POST['aprobar'])){
+            //CAMBIAR ESTADO DE LA BECA A REVISADO
+            $queryActualizar = "UPDATE becas SET estadoId = 3 WHERE id = '${datos_beca['id']}'";
+            $resultadoActualizar = mysqli_query($db, $queryActualizar);
+            if($resultadoActualizar){
+                header('Location: versolicitudes.php?resultado=1');
+            }
+        }
+        if(isset($_POST['corregir'])){
+            $mensaje = mysqli_real_escape_string($db, $_POST['mensajecorregir']); 
+
+            if(!$mensaje){
+                $errores[] = "Debe escribir un mensaje antes de enviar la corrección";
+            }
+
+            if(empty($errores)){
+                $queryCorregir = "INSERT INTO comentarios (mensaje) VALUES ('${mensaje}')";
+                $resultadoCorregir = mysqli_query($db, $queryCorregir);
+    
+                $queryId = "SELECT MAX(id) AS id FROM comentarios";
+                $row = mysqli_query($db, $queryId);
+                $resultadoId = mysqli_fetch_assoc($row);
+                if($resultadoId){
+                    $id_comentario = $resultadoId['id'];
+                    if($resultadoCorregir){
+                        $queryActualizar = "UPDATE becas SET estadoId = 2, comentarioId = '${id_comentario}' WHERE id = '${datos_beca['id']}'";
+                        $resultadoActualizar = mysqli_query($db, $queryActualizar);
+                        if($resultadoActualizar){
+                            header('Location: versolicitudes.php?resultado=2');
+                        }
+                        
+                    }
+                }
+            }   
+        }
+        if(isset($_POST['reunion'])){
+            $mensaje = mysqli_real_escape_string($db, $_POST['mensajereunion']); 
+            $link = mysqli_real_escape_string($db, $_POST['linkopcional']);
+
+            if(!$mensaje){
+                $errores[] = "Debe escribir un mensaje antes de enviar la corrección";
+            }
+            if(!$link){
+                $errores[] = "Debe copiar el link de la reunión";
+            }
+
+            if(empty($errores)){
+                $queryCorregir = "INSERT INTO comentarios (mensaje, link) VALUES ('${mensaje}','${link}')";
+                $resultadoCorregir = mysqli_query($db, $queryCorregir);
+    
+                $queryId = "SELECT MAX(id) AS id FROM comentarios";
+                $row = mysqli_query($db, $queryId);
+                $resultadoId = mysqli_fetch_assoc($row);
+                if($resultadoId){
+                    $id_comentario = $resultadoId['id'];
+                    if($resultadoCorregir){
+                        $queryActualizar = "UPDATE becas SET estadoId = 4, comentarioId = '${id_comentario}' WHERE id = '${datos_beca['id']}'";
+                        $resultadoActualizar = mysqli_query($db, $queryActualizar);
+                        if($resultadoActualizar){
+                            header('Location: versolicitudes.php?resultado=3');
+                        }
+                        
+                    }
+                }
+            }   
+        }
+    }
 
 include "includes/templates/headerAdmi.php"; 
 ?>
     <main id="main" class="contenedor-revisar">
         <section class="seccion seccion-revisar">
-            <div class="titulo bg-amarillo">
+            <div class="titulo bg-rojo">
                 <h2>Revisión</h2>
             </div>
             <div class="info">
+                <?php
+                foreach($errores as $error){ ?>
+                    <div class="alerta">
+                        <p><?php echo $error ?></p> 
+                    </div>
+                    <?php
+                }
+                ?>
                 <div class="datos">
                     <h3 class="titulo">Beca Nº:</h3>
                     <p class="texto"><?php echo $datos_beca['id']; ?></p>
@@ -86,6 +166,44 @@ include "includes/templates/headerAdmi.php";
                     <h3 class="titulo">Anexos:</h3>
                     <button id="btn-pdf3" class="visualizar visualizarLuz" >Visualizar</button>
                 </div>
+
+                <!-- FORMULARIO CORRECCION -->
+                <form class="revision-datos"  method="POST">
+
+                    <div id="overlay-corregir" class="overlay-corregir">
+                        <div id="popup-corregir" class="popup-corregir">
+                            <p id="btn-cerrar-corregir" class="btn-cerrar-corregir">x</p>
+                            <label class="mensajecorregir" for="mensajecorregir">Detalle los datos a corregir<span>*</span> </label>
+                            <textarea id="text-corregir" class="text-corregir" name="mensajecorregir" id="mensajecorregir"></textarea>
+                            <div class="botones-corregir">
+                                <a id="btn-cancelar-corregir" class="btn-correccion bg-morado">Cancelar</a>
+                                <input type="submit" class="btn-correccion bg-verde" value="Enviar Corrección" name="corregir">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="overlay-reunion" class="overlay-corregir">
+                        <div id="popup-reunion" class="popup-corregir">
+                            <p id="btn-cerrar-reunion" class="btn-cerrar-corregir">x</p>
+                            <label class="mensajecorregir" for="mensajereunion">Detalle los datos para la reunión<span>*</span> </label>
+                            <textarea class="text-corregir" name="mensajereunion" id="mensajereunion"></textarea>
+                            <label class="linkopcional" for="linkopcional">Link de reunión <span>Meet</span> (opcional)</label>
+                            <input class="boton-opcional" type="text" name="linkopcional" id="linkopcional" placeholder="www.meet.google.com">
+                            <div class="botones-corregir">
+                                <a id="btn-cancelar-reunion" class="btn-correccion bg-morado">Cancelar</a>
+                                <input type="submit" class="btn-correccion bg-verde" value="Enviar Reunión" name="reunion">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="botones-revisar">
+                        <input type="submit" class="btn-revisar-datos bg-verde" value="Aprobar" name="aprobar">
+                        <a id="btn-abrir-corregir" class="btn-revisar-datos bg-amarillo btn-corregir">Corregir</a>
+                        <a id="btn-abrir-reunion" class="btn-revisar-datos btn-reunion">Reunión</a>
+                        <!-- <a id="btn-abrir-reunion" class="btn-revisar-datos bg-morado btn-reunion">Reunión</a> -->
+                    </div>
+                    
+
+                </form>
             </div>
         </section>
     </main>

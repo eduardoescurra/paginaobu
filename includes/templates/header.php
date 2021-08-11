@@ -74,7 +74,7 @@
                     <p class="texto">Ver Postulación</p>
                 </a>
 
-                <a href="#" class="icono icono-mensaje">
+                <a id="ver-mensaje" class="icono">
                     <div class="icono-mensaje">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bell" width="20" height="20" viewBox="0 0 24 24" stroke-width="2.5" stroke="#828282" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -82,11 +82,13 @@
                         <path d="M9 17v1a3 3 0 0 0 6 0v-1" />
                         </svg>
                         <p class="mensaje">0</p>
-                    </div>    
+                        
+                    </div>  
+                    
                     <p class="texto">Mensajes</p>
                 </a>
 
-                <a id="btn-abrir-popup" href="#" class="icono">
+                <a id="btn-abrir-popup" class="icono">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout" width="28" height="28" viewBox="0 0 24 24" stroke-width="2.5" stroke="#fd0061" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                     <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />

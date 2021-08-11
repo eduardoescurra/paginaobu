@@ -59,7 +59,15 @@ include "includes/templates/headerAdmi.php";
                         <td><?php echo $beca['ciclo']; ?></td>
                         <td><?php echo $beca['fecha']; ?></td>
                         <td><?php echo $beca['anexo']; ?></td>
-                        <td><?php echo $beca['estado']; ?></td>
+                        <td><p class="estado <?php 
+                        if($beca['estado']=="CORRECCION"){
+                            echo "rojo";
+                        }elseif($beca['estado']=="REVISADO"){
+                            echo "verde";
+                        }elseif($beca['estado']=="REUNION"){
+                            echo "azul";
+                        }
+                        ?>"><?php echo $beca['estado']; ?></p> </td>
                         <td>
                             <form  method="POST" class="w-100">
                                 <input type="hidden" value="<?php echo $beca['id'];?>" name="id">

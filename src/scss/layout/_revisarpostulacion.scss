@@ -54,6 +54,179 @@
         }
     }
 }
+.botones-corregir{
+    margin-top: 2rem;
+    @include tablet{
+        @include grid(2);
+    }
+    .btn-correccion{
+        padding: 1.2rem 1rem;
+        text-align: center;
+        font-size: 1.6rem;
+        color: $blanco;
+        cursor: pointer;
+        border: 0;
+        border-radius: 0.3rem;
+    }
+}
+
+//OVERLAY CORREGIR
+.overlay-corregir{
+    background-color: rgba($color: #000000, $alpha: 0.3);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    &.active{
+        visibility: visible;
+    }
+    .popup-corregir{
+        background-color: #f8f8f8;
+        box-shadow: 0 0 0.5rem 0 rgba($color: #000000, $alpha: 0.3);
+        border-radius: 0.5rem;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: 0.3s ease all;
+        transform: scale(0.7);
+        opacity: 0;
+        label{
+            opacity: 0;
+        }
+        textarea{
+            color: #202124;
+            font-size: 1.4rem;
+            border-radius: 0.3rem;
+            padding: 1rem;
+            width: 100%;
+            height: 10rem;
+            resize: none;
+            @include tablet{
+                width: 40rem;
+                height: 10rem;
+                resize: none;  
+            }
+        }
+        .boton-opcional{
+            font-size: 1.4rem;
+            color: $azul;
+            width: 100%;
+            border: 1px solid #595959;
+            background: $blanco;
+        }
+        .mensajecorregir, .linkopcional{
+            font-size: 1.8rem;
+            width: 100%;
+            color: #595959;
+            font-weight: $bold;
+            text-align: left;
+        }
+        .linkopcional{
+            margin-top: 1rem;
+            span{
+                color: $verde;
+            }
+        }
+        .mensajecorregir{
+            span{
+                color: $rojo;
+            }
+        }
+    }
+    
+    .btn-cerrar-corregir{
+        margin: 0;
+        width: 100%;
+        cursor: pointer;
+        border: 0;
+        background: transparent;
+        font-size: 1.8rem;
+        font-weight: $bold;
+        display: block;
+        text-align: right;
+        color: #bbbbbb;
+        transition: 0.3s ease all;
+        &:hover{
+            color: #000000;
+        }
+    }
+
+}
+//ANIMACIONES CORREGIR
+.popup-corregir.active{
+    opacity: 1;
+    transform: scale(1);
+}
+.popup-corregir.active label{
+    animation: entradaLabel 0.5s ease .3s forwards;
+}
+@keyframes entradaLabel{
+    from{
+        transform: translateY(-2.5rem);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+.botones-revisar{
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    @include tablet{
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .btn-revisar-datos{
+        cursor: pointer;
+        color: $blanco;
+        font-size: 1.6rem;
+        margin-right: 0;
+        margin-bottom: 1rem;
+        @include tablet{
+            margin-right: 1rem;
+            margin-bottom: 0;
+        }
+    }
+    .btn-corregir{
+        text-align: center;
+        border: 0;
+        border-radius: 0.3rem;
+        padding: 1.2rem 2rem;
+        &:hover{
+            background: lighten($amarillo, 10);
+        }
+        @include tablet{
+            margin-right: 1rem;
+            margin-bottom: 0;
+        }
+    }
+    .btn-reunion{
+        background-color: $morado;
+        text-align: center;
+        border: 0;
+        border-radius: 0.3rem;
+        padding: 1.2rem 2rem;
+        &:hover{
+            background: lighten($morado, 10);
+        }
+        @include tablet{
+            margin-right: 0;
+            margin-bottom: 0;
+        }
+    }
+}
+//OVERLAY PDF
 .overlay-pdf{
     background-color: rgba($color: #000000, $alpha: 0.3);
     position: fixed;

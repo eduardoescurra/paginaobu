@@ -24,7 +24,10 @@
 include "includes/templates/header.php"; 
 ?>
 
-    <main class="contenedor main">
+    <main class="contenedor main contenedor-mensaje">
+
+        <?php @include "includes/templates/mensaje.php" ?>
+
         <div class="principal r-gap">
             <section class="seccion">
                 <div class="titulo bg-azul">

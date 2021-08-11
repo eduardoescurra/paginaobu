@@ -1,5 +1,6 @@
 .bg-rojo{
     background-color: $rojo;
+    
 }
 .bg-azul{
     background-color: $azul;
@@ -14,6 +15,14 @@
 }
 .bg-amarillo{
     background: $amarillo;
+}
+.bg-morado{
+    background-color: $morado;
+    transition: opacity .3s ease-in-out;
+    &:hover{
+        opacity: 0.75;
+        
+    }
 }
 .r-gap{
     display: grid;

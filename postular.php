@@ -163,7 +163,8 @@
  }
 
 include "includes/templates/header.php"; ?>
-    <main class="main-postular">
+    <main class="main-postular contenedor-mensaje">
+    <?php @include "includes/templates/mensaje.php" ?>
         <section class="seccionP">
             <div class="titulo bg-rojo">
                 <h2>Postular</h2>

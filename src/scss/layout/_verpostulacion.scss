@@ -17,30 +17,30 @@
     }
 }
 .comentario{
+    padding: 0 2rem 2rem 2rem;
     @include tablet{
-        @include grid (3);
+        display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
     }
-    .columna{
-        h3{
-            text-align: center;
+    
+    h3{
+        font-size: 2rem;
+        text-align: center;
+    }
+    p{
+        text-align: center;
+    }
+    a{
+        background-color: $verde;
+        color: $blanco;
+        padding: 1rem 2rem;
+        border-radius: 1rem;
+        font-weight: $bold;
+        display: block;
+        @include tablet{
+            display: inline-block;
         }
-        p{
-            text-align: center;
-        }
-        a{
-            background-color: $verde;
-            color: $blanco;
-            padding: 1rem 2rem;
-            border-radius: 1rem;
-            font-weight: $bold;
-            display: block;
-            @include tablet{
-                margin-left: 4rem;
-                display: inline-block;
-            }
-        }
+    }
 
-    }
 }

@@ -43,7 +43,8 @@
 
 include "includes/templates/header.php"; 
 ?>
-    <main class="contenedor baseP">
+    <main class="contenedor baseP contenedor-mensaje">
+        <?php @include "includes/templates/mensaje.php" ?>
         <div class="principal r-gap">
             <?php if(!$datos_beca) : ?>
                 <section class="seccion">
@@ -89,33 +90,7 @@ include "includes/templates/header.php";
                 </div>
 
             <?php endif;?>
-            <section class="seccion">
-                <div class="titulo bg-azul">
-                    <h2>Comentario de la Asistenta</h2>
-                </div>
-                <div class="info">
-                    <h3>Comentario</h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae officia quae doloremque, sapiente ab ipsam suscipit excepturi id porro quas facilis iusto in, dicta perspiciatis doloribus pariatur inventore illum est.</p>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae officia quae doloremque, sapiente ab ipsam suscipit excepturi id porro quas facilis iusto in, dicta perspiciatis doloribus pariatur inventore illum est.</p>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae officia quae doloremque, sapiente ab ipsam suscipit excepturi id porro quas facilis iusto in, dicta perspiciatis doloribus pariatur inventore illum est.</p>
-                    <h3>Datos para la entrevista</h3>
-                </div>
-                
-                <div class="info comentario">
-                    <div class="columna">
-                        <h3>Día</h3>
-                        <p>05/08/2021</p>
-                    </div>
-                    <div class="columna">
-                        <h3>Hora</h3>
-                        <p>10:00 am</p>
-                    </div>
-                    <div class="columna">
-                        <h3>Enlace</h3>
-                        <p><a href="#">https://meet.google.com/wtb-fjus-vgt</a></p>
-                    </div>
-                </div>
-            </section>
+        <?php @include "includes/templates/comentario.php" ?>    
         </div>
     </main>
 
