@@ -170,7 +170,7 @@
         @include tablet{
             justify-content: center;
             align-items: center;
-            @include grid(3); 
+            @include grid(4); 
         }
     }
 }

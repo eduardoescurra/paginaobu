@@ -106,22 +106,23 @@ function abrirPopup(){
     const btnCerrarPopup = document.getElementById('btn-cerrar-popup');
     const btnCerrar = document.querySelector('.btn-cancelar');
 
-    btnAbriPopup.addEventListener('click', function(){
-        overlay.classList.add("active");
-        popup.classList.add("active");
-    });
-    btnCerrarPopup.addEventListener('click', function(){
-        overlay.classList.remove("active");
-        popup.classList.remove("active");
-    });
-    btnCerrar.addEventListener('click', function(){
-        overlay.classList.remove("active");
-        popup.classList.remove("active");
-    });
-    // overlay.addEventListener('click',function(){
-    //     overlay.classList.remove("active");
-    //     popup.classList.remove("active");
-    // })
+    if(btnAbriPopup === null || overlay === null || popup === null || btnCerrarPopup === null || btnCerrar === null){
+        //console.log("Faltan elementos");
+    }else{
+        btnAbriPopup.addEventListener('click', function(){
+            overlay.classList.add("active");
+            popup.classList.add("active");
+        });
+        btnCerrarPopup.addEventListener('click', function(){
+            overlay.classList.remove("active");
+            popup.classList.remove("active");
+        });
+        btnCerrar.addEventListener('click', function(){
+            overlay.classList.remove("active");
+            popup.classList.remove("active");
+        });
+    }
+
 }
 function verificarElementos(btnAbrirPdf, overlayPdf, contenedorPdf, btnCerrarPdf){
     if(btnAbrirPdf === null || overlayPdf === null || contenedorPdf === null || btnCerrarPdf === null){

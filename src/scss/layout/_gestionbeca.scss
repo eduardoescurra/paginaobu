@@ -1,0 +1,71 @@
+.contenedor-gestion{
+    margin: 5rem auto;
+}.form-gestionbeca{
+    fieldset{
+        border: 0;
+        padding: 0;
+        margin: 1rem 0;
+        border-bottom: 1px solid $grisClaro;
+    }
+    .cantidad-total{
+        label, input{ 
+            display: block;
+            width: 100%;
+        }
+        margin-bottom: 2rem;
+        @include tablet{
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            column-gap: 2rem;
+            align-items: center;
+            justify-content: space-evenly;
+            label{
+                text-align: right;
+            }
+        }
+    }
+    legend{
+        width: 100%;
+        margin-bottom: 1rem;
+        @include tablet{
+            text-align: right;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            column-gap: 2rem;
+        }
+    }
+    .cantidad-facultades{
+        
+        .facultad{
+            margin-bottom: 1rem;
+            .label, .input{
+                width: 100%;
+                display: block;
+            }
+            @include tablet{
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                column-gap: 2rem;
+                align-items: center;
+                justify-content: center;
+                .label{
+                    text-align: right;
+                }
+            }
+        }
+
+    }
+    .submits{
+        margin-top: 2rem;
+        @include tablet{
+            @include grid(2);
+        }
+        .btn-becas{
+            margin-top: 1rem;
+            cursor: pointer;
+            font-size: 1.6rem;
+            color: $blanco;
+            width: 100%;
+        }
+    }
+}
