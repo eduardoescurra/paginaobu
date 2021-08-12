@@ -55,7 +55,7 @@
             if($_POST['puntajeanexo']>50 || $_POST['puntajeanexo']<0){
                 $errores[] = "El puntaje del anexo es incorrecto";
             }else{
-                $queryAnexo = "INSERT INTO alumnos (puntajeAnexo) VALUES (${_POST['puntajeanexo']}) WHERE id = ${datos_beca['id_alumno']}";
+                $queryAnexo = "UPDATE alumnos SET puntajeAnexo = ${_POST['puntajeanexo']} WHERE id = ${datos_beca['id_alumno']}";
                 $resultadoAnexo = mysqli_query($db, $queryAnexo);
 
                 $sumatotal = floatval($datosPuntaje['promedio']) + floatval($datosPuntaje['puntaje']) + floatval($_POST['puntajeanexo']);

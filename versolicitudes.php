@@ -10,7 +10,7 @@
     include "includes/config/database.php";
     $db = conectarDB();
 
-    $query = "SELECT becas.id, alumnos.apellido, alumnos.nombre, facultades.nombre as 'facultad', escuelas.nombre as 'escuela', ciclos.nombre as 'ciclo', becas.fecha, becas.anexo, estados.nombre as 'estado' FROM becas
+    $query = "SELECT becas.id, becas.puntaje, alumnos.apellido, alumnos.nombre, facultades.nombre as 'facultad', escuelas.nombre as 'escuela', ciclos.nombre as 'ciclo', becas.fecha, becas.anexo, estados.nombre as 'estado' FROM becas
     LEFT JOIN alumnos ON alumnos.id = becas.alumnoId
     LEFT JOIN escuelas ON escuelas.id = alumnos.escuelaId
     LEFT JOIN facultades ON facultades.id = escuelas.facultadId
@@ -31,7 +31,7 @@
 
 include "includes/templates/headerAdmi.php"; 
 ?>
-    <main class="contenedor">
+    <main class="contenedor-gap">
         <div class="contenedor-tabla">
             <table class="table">
                 <thead>
@@ -44,6 +44,7 @@ include "includes/templates/headerAdmi.php";
                         <th>Ciclo</th>
                         <th>Fecha</th>
                         <th>Anexos</th>
+                        <th>Puntaje</th>
                         <th>Estado</th>
                         <th>Acción</th>
                     </tr>
@@ -59,6 +60,7 @@ include "includes/templates/headerAdmi.php";
                         <td><?php echo $beca['ciclo']; ?></td>
                         <td><?php echo $beca['fecha']; ?></td>
                         <td><?php echo $beca['anexo']; ?></td>
+                        <td><?php echo $beca['puntaje']; ?></td>
                         <td><p class="estado <?php 
                         if($beca['estado']=="EN CORRECCION"){
                             echo "rojo";
