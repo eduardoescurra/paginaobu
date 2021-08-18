@@ -21,7 +21,7 @@
                 <?php if($datosComentarios['link']) :?>
                     <div class="col-1">
                         <h3>Link para la Reunión</h3>
-                        <p><a href="<?php echo $datosComentarios['link']; ?>"><?php echo $datosComentarios['link']; ?></a></p>
+                        <p><a target="_blank" href="<?php echo $datosComentarios['link']; ?>"><?php echo $datosComentarios['link']; ?></a></p>
                     </div>
                 <?php endif; ?>
                 <?php if($datosComentarios['id'] == 2) :?>

@@ -86,7 +86,7 @@
                 $queryCerrar = "UPDATE ciclos SET convocatoria = 'no' WHERE id = 1";
                 $resultadoCerrar = mysqli_query($db, $queryCerrar);
                 if($resultadoCerrar){
-                    header('Location: versolicitudes.php?resultado=1');
+                    header('Location: versolicitudes.php?resultado=3');
                 }
             }
             if(isset($_POST['iniciar'])){
@@ -182,6 +182,14 @@ include "includes/templates/headerAdmi.php";
         "success"
         );</script>
     <?php endif; ?>    
+    <?php if($resultadoP == 2) : ?>
+        <script type="text/javascript">
+        Swal.fire(
+        "!Éxito!",
+        "Convocatoria Iniciada",
+        "success"
+        );</script>
+    <?php endif; ?> 
 <?php include "includes/templates/popupAdmi.php"; ?>
 <?php include "includes/templates/footer.php"; ?> 
 

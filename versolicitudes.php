@@ -6,6 +6,8 @@
     if(!$autenticado){
         header('Location: loginAdmi.php');
     }
+    //MUESTRA MENSAJE CONDICIONAL
+    $resultadoGestion = $_GET['resultado'] ?? null;
 
     include "includes/config/database.php";
     $db = conectarDB();
@@ -94,6 +96,14 @@ include "includes/templates/headerAdmi.php";
             </table>
         </div>
     </main>
+    <?php if($resultadoGestion == 3) : ?>
+        <script type="text/javascript">
+        Swal.fire(
+        "!Éxito!",
+        "Convocatoria Finalizada",
+        "success"
+        );</script>
+    <?php endif; ?> 
 <?php include "includes/templates/popupAdmi.php"; ?>
 <?php include "includes/templates/footer.php"; ?> 
 
