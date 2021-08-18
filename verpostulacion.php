@@ -94,6 +94,8 @@ include "includes/templates/header.php";
                                     echo "azul";
                                 }elseif($datos_beca['estado']=="CORREGIDO"){
                                     echo "naranja";
+                                }elseif($datos_beca['estado']=="BECADO"){
+                                    echo "becado";
                                 }
                                 ?>"><?php echo $datos_beca['estado'] ?></p></td>
                             </tr>

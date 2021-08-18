@@ -2,12 +2,16 @@
     margin: 5rem auto;
 }.form-gestionbeca{
     fieldset{
+        color: $azul;
         border: 0;
         padding: 0;
         margin: 1rem 0;
         border-bottom: 1px solid $grisClaro;
     }
     .cantidad-total{
+        label{
+            color: $azul;
+        }
         label, input{ 
             display: block;
             width: 100%;
@@ -37,17 +41,21 @@
     .cantidad-facultades{
         
         .facultad{
+            color: $gris;
             margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid $grisClaro;
             .label, .input{
                 width: 100%;
                 display: block;
             }
             @include tablet{
                 display: grid;
-                grid-template-columns: 1fr 2fr;
+                grid-template-columns: 4fr 4fr 2fr 1fr;
                 column-gap: 2rem;
                 align-items: center;
                 justify-content: center;
+                border-bottom: 0;
                 .label{
                     text-align: right;
                 }
@@ -66,6 +74,11 @@
             font-size: 1.6rem;
             color: $blanco;
             width: 100%;
+        }
+        &.iniciar{
+            @include tablet{
+                @include grid(1);
+            }
         }
     }
 }

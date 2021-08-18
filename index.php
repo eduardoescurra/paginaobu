@@ -35,12 +35,20 @@ include "includes/templates/header.php";
                 </div>
                 <div class="info">
                     <h3 class="postulante">!Hola <?php echo $datos_alumno['nombre'] ?>!</h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae officia quae doloremque, sapiente ab ipsam suscipit excepturi id porro quas facilis iusto in, dicta perspiciatis doloribus pariatur inventore illum est.</p>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur molestias quasi optio! Consequuntur expedita saepe libero accusantium non animi molestiae laborum dolore molestias hic ullam iste, sed consequatur maxime fuga.</p>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur molestias quasi optio! Consequuntur expedita saepe libero accusantium non animi molestiae laborum dolore molestias hic ullam iste, sed consequatur maxime fuga.</p>
+                    <p>Te damos la bienvenida a nuestra página web donde  pondrás realizar el trámite de solicitud de beca de alimentos de manera remota.</p>
+                    <p>A continuación podrás encontrar el Cronograma y los Criterios de Evaluación (Parámetros) y realizar el correcto proceso de postulación dirigida hacia una beca de alimentos. </p>
+                    <p>En la pestaña Postular, podrás subir tu datos personales y documentos necesarios para participar en el concurso.</p>
+                    <p>En la pestaña Ver postulación podrás ver el estado de tu postulación (No revisado, En corrección, Corregido, Reunión, Revisado y Becado).</p>
+                    <p>Y en la opción Mensajes, recibirás una notificación directa de la encargada de tu facultad.</p>
                     <img class="oficina" src="build/img/OBU.webp" alt="imagen de obu">
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur molestias quasi optio! Consequuntur expedita saepe libero accusantium non animi molestiae laborum dolore molestias hic ullam iste, sed consequatur maxime fuga.</p>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur molestias quasi optio! Consequuntur expedita saepe libero accusantium non animi molestiae laborum dolore molestias hic ullam iste, sed consequatur maxime fuga.</p>
+                    <p></p>
+                    <h3>Funciones</h3>
+                    <ol>
+                        <li>Dirigir la ejecución de programas de alimentación y de la vivienda universitaria.</li>
+                        <li>Evaluar las actividades propias de la Unidad y determina las medidas correctivas para el buen funcionamiento del mismo.</li>
+                        <li>Supervisar y controlar la admisión y estadía de los estudiantes residentes y que estos cumplan con el Reglamento de la Residencia Universitaria.</li>
+                        <li>Dirigir y coordinar la formulación de documentos técnicos normativos para la correcta aplicación del sistema.</li>
+                    </ol>
                 </div>
             </section>
             <section class="seccion">
@@ -56,8 +64,19 @@ include "includes/templates/header.php";
                     <h2>Cronograma</h2>
                 </div>
                 <div class="info">
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae officia quae doloremque, sapiente ab ipsam suscipit excepturi id porro quas facilis iusto in, dicta perspiciatis doloribus pariatur inventore illum est.</p>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur molestias quasi optio! Consequuntur expedita saepe libero accusantium non animi molestiae laborum dolore molestias hic ullam iste, sed consequatur maxime fuga.</p>
+                    <p>El proceso de postulacion de Becas de Alimentos lo realizará el estudiante
+                    con sus datos personales y se hará de acuerdo a las fechas asignadas a continuacion:</p>
+                    <ul>
+                        <li>Creacion de cuenta personal para cada postulante -  Lunes 6 de Septiembre, 08:o0 a 16:00 horas</li>
+                    </ul>
+                    <p>Ingreso de los datos del postulante:</p>
+                    <ul>
+                        <li>Lic. Emma Solis Espinoza: FCC, FCE, FIPA, FIARN, FCNM- Martes 7 septiembre, 08:00 a 16:00 horas</li>
+                        <li>Lic. Veronica Lazaro Lazaro: FIQ, FCA, FIIS, FIEE, FCS - Miercoles 8 septiembre, 08:00 a 16:00 horas</li>
+                        <li>Lic. Natividad Cerrón Rengifo: FIME - Jueves 9 septiembre, 08:00 a 16:00 horas</li>
+                        <li>Correcion de datos del postulante - Lunes 13 de Septiembre, 08:o0 a 16:00 horas</li>
+                        <li>Resultados Finales - Viernes, 17 de Septiembre</li>
+                    </ul>
                 </div>
             </section>
             <section class="seccion">
@@ -65,8 +84,17 @@ include "includes/templates/header.php";
                     <h2>Parámetros</h2>
                 </div>
                 <div class="info">
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae officia quae doloremque, sapiente ab ipsam suscipit excepturi id porro quas facilis iusto in, dicta perspiciatis doloribus pariatur inventore illum est.</p>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur molestias quasi optio! Consequuntur expedita saepe libero accusantium non animi molestiae laborum dolore molestias hic ullam iste, sed consequatur maxime fuga.</p>
+                    <p>La Oficina de Bienestar Universitario tomará estos siguientes parametros:</p>
+                    <ul>
+                        <li>Promedio ponderado por ciclo</li>
+                        <li>Residencia actual</li>
+                        <li>Situacion economica</li>
+                        <li>Promedio Ponderado: 20 puntos</li>
+                        <li>Distancia de Residencia: 30 puntos</li>
+                        <li>Anexos: 50 puntos</li>
+                        <li>Promedio Ponderado: 20 puntos</li>
+                        <li>Socieconomico, Acta de defuncion familiar por Covid, Discapacidad, Salud</li>
+                    </ul>
                 </div>
             </section>
         </div>

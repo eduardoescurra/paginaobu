@@ -19,6 +19,10 @@
 
     $resultadoConsulta = mysqli_query($db, $query);
 
+    $queryCiclo = "SELECT * FROM ciclos WHERE id = 1";
+    $resultadoCiclo = mysqli_query($db, $queryCiclo);
+    $datosCiclo = mysqli_fetch_assoc($resultadoCiclo);
+
      //REVISAR EL POST
      if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $id = $_POST['id'];
@@ -46,7 +50,9 @@ include "includes/templates/headerAdmi.php";
                         <th>Anexos</th>
                         <th>Puntaje</th>
                         <th>Estado</th>
-                        <th>Acción</th>
+                        <?php if($datosCiclo['convocatoria'] == 'si') :?>
+                            <th>Acción</th>
+                        <?php endif; ?>
                     </tr>
                 </thead>
                 <tbody>
@@ -70,14 +76,18 @@ include "includes/templates/headerAdmi.php";
                             echo "azul";
                         }elseif($beca['estado']=="CORREGIDO"){
                             echo "naranja";
+                        }elseif($beca['estado']=="BECADO"){
+                            echo "becado";
                         }
                         ?>"><?php echo $beca['estado']; ?></p> </td>
-                        <td>
-                            <form  method="POST" class="w-100">
-                                <input type="hidden" value="<?php echo $beca['id'];?>" name="id">
-                                <input type="submit" value="Revisar" class="btn btn-revisar">
-                            </form>
-                        </td>
+                        <?php if($datosCiclo['convocatoria'] == 'si') :?>
+                            <td>
+                                <form  method="POST" class="w-100">
+                                    <input type="hidden" value="<?php echo $beca['id'];?>" name="id">
+                                    <input type="submit" value="Revisar" class="btn btn-revisar">
+                                </form>
+                            </td>
+                        <?php endif; ?>
                     </tr>
                     <?php endwhile; ?>
                 </tbody>

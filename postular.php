@@ -96,7 +96,10 @@
     
     if(empty($errores)){
         //VERIFICA SI YA SE POSTULO
-        if($datos_alumno['postulado'] == 'no'){
+        if($datos_alumno['postulado'] == 'si'){          
+            //REDIRECIONAR AL USUARIO   
+            header('Location: index.php?resultado=2');
+        }else{
             //SUBIDA DE ARCHIVOS
             $carpetaPdf = "pdf/";
 
@@ -153,10 +156,7 @@
                     //REDIRECIONAR AL USUARIO   
                     header('Location: index.php?resultado=1');
                 }  
-            }    
-        }else{
-            //REDIRECIONAR AL USUARIO   
-            header('Location: index.php?resultado=2');
+            }  
         }
 
         
@@ -186,7 +186,7 @@ include "includes/templates/header.php"; ?>
                         <input class="input" type="number" name="dni" placeholder="ingrese su dni" id="dni"  value="<?php echo $dni; ?>">
 
                         <label for="email">Email <span>*</span></label>
-                        <input class="input" type="email" name="email" placeholder="su Email" id="email" value="<?php echo $email; ?>">
+                        <input class="input" type="text" name="email" placeholder="su Email" id="email" value="<?php echo $email; ?>">
 
                         <label for="celular">Celular <span>*</span></label>
                         <input class="input" type="number" name="celular" placeholder="ingrese su celular" id="celular" value="<?php echo $celular; ?>">

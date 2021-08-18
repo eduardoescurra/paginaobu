@@ -50,6 +50,61 @@
             }
             if(isset($_POST['finalizar'])){
                 //FINALIZAR LA CONVOCATORIA
+                // echo "<pre>";
+                // var_dump($_POST);
+                // echo "</pre>";
+                for($i=1;$i<=11;$i++){
+                    if($_POST[$i] != 0){
+                        $query = "SELECT becas.id as 'id', alumnos.nombre FROM becas
+                        LEFT JOIN alumnos ON alumnos.id = becas.alumnoId
+                        LEFT JOIN escuelas ON escuelas.id = alumnos.escuelaId
+                        LEFT JOIN facultades ON facultades.id = escuelas.facultadId
+                        WHERE facultades.id = ${i}
+                        ORDER BY puntaje DESC LIMIT ${_POST[$i]}";
+                        // echo "<pre>";
+                        // var_dump($query);
+                        // echo "</pre>";
+                        $resultadoBecas = mysqli_query($db, $query);
+                        while($becados = mysqli_fetch_assoc($resultadoBecas)){
+                            // echo "<pre>";
+                            // var_dump($becados['id'] . " " . $becados['nombre'] );
+                            // echo "</pre>";
+                            $queryEstado = "UPDATE becas
+                            SET estadoId = 6
+                            WHERE id = ${becados['id']}";
+                            // echo "<pre>";
+                            // var_dump($queryEstado);
+                            // echo "</pre>";
+                            $resultadoEstado = mysqli_query($db, $queryEstado);
+                            if(!$resultadoEstado){
+                                echo "No se pudo actualizar el estado";
+                            }
+                        }
+                    }
+                }
+                //CERRAR CONVOCATORIA
+                $queryCerrar = "UPDATE ciclos SET convocatoria = 'no' WHERE id = 1";
+                $resultadoCerrar = mysqli_query($db, $queryCerrar);
+                if($resultadoCerrar){
+                    header('Location: versolicitudes.php?resultado=1');
+                }
+            }
+            if(isset($_POST['iniciar'])){
+                //INICIAR CONVOCATORIA
+                $queryIniciar = "UPDATE ciclos SET convocatoria = 'si' WHERE id = 1";
+                $resultadoIniciar = mysqli_query($db, $queryIniciar);
+                if($resultadoIniciar){
+                    //HACER CAMBIOS
+                    $queryNueva = "UPDATE alumnos SET puntajeAnexo = 0, postulado = 'no'";
+                    $resultadoNueva = mysqli_query($db, $queryNueva);
+                    if($resultadoNueva){
+                        $queryDelete = "DELETE FROM becas";
+                        $resultadoDelete = mysqli_query($db, $queryDelete);
+                        if($resultadoDelete){
+                            header('Location: gestionbeca.php?resultado=2');
+                        }
+                    }
+                }
             }
         }
     }
@@ -86,17 +141,32 @@ include "includes/templates/headerAdmi.php";
                                 <?php 
                                 $query = "SELECT * FROM facultades";
                                 $resultado = mysqli_query($db, $query);
-                                while($row = mysqli_fetch_assoc($resultado)) : ?>
+                                while($datosResultado = mysqli_fetch_assoc($resultado)) : ?>
+                                <?php 
+                                $queryPostulantes = "SELECT COUNT(*) as 'cantidad' FROM becas
+                                LEFT JOIN alumnos ON alumnos.id = becas.alumnoId
+                                LEFT JOIN escuelas ON escuelas.id = alumnos.escuelaId
+                                LEFT JOIN facultades ON facultades.id = escuelas.facultadId
+                                WHERE facultades.id = ${datosResultado['id']}";
+                                $resultadoPostulantes = mysqli_query($db, $queryPostulantes);
+                                $datosPostulante = mysqli_fetch_assoc($resultadoPostulantes);
+                                ?>
                                     <div class="facultad">
-                                        <label class="label" for="<?php echo $row['id'] ?>"><?php echo $row['nombre'] ?></label>
-                                        <input class="input" id="<?php echo $row['id'] ?>" name="<?php echo $row['id'] ?>" type="number" placeholder="cantidad de becas en <?php echo $row['nombre']?> " value="<?php echo $row['cantidadbeca'] ?>">
+                                        <label class="label" for="<?php echo $datosResultado['id'] ?>"><?php echo $datosResultado['nombre'] ?></label>
+                                        <input class="input" id="<?php echo $datosResultado['id'] ?>" name="<?php echo $datosResultado['id'] ?>" type="number" placeholder="cantidad de becas en <?php echo $datosResultado['nombre']?> " value="<?php echo $datosResultado['cantidadbeca'] ?>">
+                                        <label class="label">Nº Postulados</label>
+                                        <input class="input" type="number" value="<?php echo $datosPostulante['cantidad'] ?>" disabled>
                                     </div>
                                 <?php endwhile; ?>
                             </div>
                         </fieldset>
-                        <div class="submits">
-                            <input class="btn-becas bg-verde" type="submit" value="Guardar Datos" name="guardar">
-                            <input class="btn-becas bg-naranja" type="submit" value="Finalizar Convocatoria" name="finalizar">
+                        <div class="submits <?php if($datosCiclo['convocatoria'] == 'no'){ echo "iniciar" ;} ?>">
+                            <?php if($datosCiclo['convocatoria'] == 'si') : ?>
+                                <input class="btn-becas bg-verde" type="submit" value="Guardar Datos" name="guardar">
+                                <input class="btn-becas bg-rojo" type="submit" value="Finalizar Convocatoria" name="finalizar">
+                            <?php else : ?>
+                                <input class="btn-becas bg-amarillo" type="submit" value="Iniciar Convocatoria" name="iniciar">
+                            <?php endif; ?>
                         </div>
                     </form>
 
