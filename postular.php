@@ -59,6 +59,9 @@
     if(!$dni){
         $errores[] = "El DNI es obligatorio";
     }
+    if($dni<0 || $dni>=10000000){
+        $errores[] = "El DNI no es valido";
+    }
     if(!$email){
         $errores[] = "El email es obligatorio o no es válido";
     }
