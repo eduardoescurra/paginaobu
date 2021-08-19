@@ -1,4 +1,5 @@
 <?php
+
 function estadoAutenticado():bool{
     session_start();
     $autenticado = $_SESSION['login'];

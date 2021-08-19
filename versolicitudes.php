@@ -25,6 +25,10 @@
     $resultadoCiclo = mysqli_query($db, $queryCiclo);
     $datosCiclo = mysqli_fetch_assoc($resultadoCiclo);
 
+    //FACULTADES
+    $queryFacu = "SELECT * FROM facultades";
+    $resultadoFacu = mysqli_query($db, $queryFacu);
+
      //REVISAR EL POST
      if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $id = $_POST['id'];
@@ -38,6 +42,29 @@
 include "includes/templates/headerAdmi.php"; 
 ?>
     <main class="contenedor-gap">
+        <div class="buscador">
+            <div class="bus1">
+                <p>Buscar por Id:</p>
+                <input class="input-id" id="input-id" type="number">
+            </div>
+            <div class="bus1">
+                <p>Buscar por Apellido:</p>
+                <input class="input-id" id="input-apellido" type="text">
+            </div>
+            <div class="bus1">
+                <p>Buscar por Facultad:</p>
+                <select id="input-facultad" name="input-facultad" class="input-facultad">
+                <option value="">-- Seleccione --</option>
+                <?php while($rowFacu = mysqli_fetch_assoc($resultadoFacu)) : ?>
+                    <option value="<?php echo $rowFacu['id'] ?>"><?php echo $rowFacu['nombre']; ?></option>
+                    <?php endwhile; ?>
+                </select>
+            </div>
+            <div class="bus1">
+                <p>Buscar por Estado:</p>
+                <input class="input-id" id="input-estado" type="text">
+            </div>
+            </div>
         <div class="contenedor-tabla">
             <table class="table">
                 <thead>
@@ -57,7 +84,7 @@ include "includes/templates/headerAdmi.php";
                         <?php endif; ?>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="contenido-tabla">
                     <?php while( $beca = mysqli_fetch_assoc($resultadoConsulta)) : ?>
                     <tr> <!--//MOSTRAR LOS RESULTADOS-->
                         <td><?php echo $beca['id']; ?></td>

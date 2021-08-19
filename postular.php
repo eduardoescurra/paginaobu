@@ -59,7 +59,7 @@
     if(!$dni){
         $errores[] = "El DNI es obligatorio";
     }
-    if($dni<0 || $dni>=10000000){
+    if($dni<10000000 || $dni>=100000000){
         $errores[] = "El DNI no es valido";
     }
     if(!$email){
@@ -67,6 +67,9 @@
     }
     if(!$celular){
         $errores[] = "El celular es obligatorio";
+    }
+    if($dni<0 || $celular>=1000000000){
+        $errores[] = "El número de celular no es válido";
     }
     if(!$direccion){
         $errores[] = "La dirección es obligatoria";

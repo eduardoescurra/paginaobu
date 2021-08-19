@@ -8,8 +8,39 @@
     <link rel="stylesheet" href="build/css/app.css">
     <link rel="stylesheet" href="assets/plugins/SweetAlert/dist/sweetalert2.min.css">
     <script src="build/js/jquery-3.6.0.min.js"></script>
-    <script src="build/js/bundle.min.js"></script>
+    <script language="javascript">
 
+    $(document).ready(function(){
+        $("#input-id").keyup(function (e){
+            var id_beca = $(this).val();
+            $.post("filtrarId.php", {id_beca: id_beca}, function(data){
+                $("#contenido-tabla").html(data);
+            });
+        });
+        $("#input-apellido").keyup(function (e){
+            var apellido_beca = $(this).val();
+            $.post("filtrarId.php", {apellido_beca: apellido_beca}, function(data){
+                $("#contenido-tabla").html(data);
+            });
+        });
+        $("#input-facultad").on('change', function () {
+            $("#input-facultad option:selected").each(function () {
+                var facultad_beca = $(this).val();
+                $.post("filtrarId.php", { facultad_beca: facultad_beca }, function(data) {
+                    $("#contenido-tabla").html(data);
+                });			
+            });
+        });
+        $("#input-estado").keyup(function (e){
+            var estado_beca = $(this).val();
+            $.post("filtrarId.php", {estado_beca: estado_beca}, function(data){
+                $("#contenido-tabla").html(data);
+            });
+        });
+    });
+
+    </script>
+    <script src="build/js/bundle.min.js"></script>
     <script src="assets/plugins/SweetAlert/dist/sweetalert2.all.min.js"></script>
 </head>
 <body>

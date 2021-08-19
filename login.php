@@ -5,6 +5,11 @@
     require "includes/config/database.php";
     $db = conectarDB();
 
+    //HAY CONVOCATORIA?
+    $query2 = "SELECT * FROM ciclos WHERE id = 1";
+    $resultado2 = mysqli_query($db, $query2);
+    $datosCiclo = mysqli_fetch_assoc($resultado2);
+
     //AUTENTICAR EL USUARIO
     $errores = [];
     $usuario = "";
@@ -44,7 +49,12 @@
                         $_SESSION['login'] = true;
                         $_SESSION['alumno'] = true;
 
-                        header('Location: index.php');
+                        if($datosCiclo['convocatoria'] == 'si'){
+                            header('Location: index.php');
+                        }
+                        else{
+                            $errores[] = "Por el momento no hay convocatoria";
+                        }
                     }else{
                         $errores[] = "La contraseña es incorrecta";
                     }
